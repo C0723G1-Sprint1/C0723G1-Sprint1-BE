@@ -4,4 +4,8 @@ import com.example.medical_supplies.model.auth.Employee;
 
 public interface IEmployeeService {
     Employee findEmployeeById(Integer id);
+
+    Employee findEmployeeByPhone(String phone);
+
+    void editEmployeeRepo(Employee employee);
 }
