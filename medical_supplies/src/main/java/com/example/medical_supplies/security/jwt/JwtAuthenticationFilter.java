@@ -1,6 +1,5 @@
 package com.example.medical_supplies.security.jwt;
 
-import com.example.medical_supplies.service.impl.MyUserDetailService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
