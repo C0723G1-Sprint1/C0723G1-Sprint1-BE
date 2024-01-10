@@ -17,7 +17,6 @@ public class LoginDTO implements Validator  {
 
     @NotBlank(message = "Email không được để trống.")
     @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$",message = "Email sai định dạng.")
-    @Size(min = 15,message = "Email phải từ 15 kí tự")
     @Size(max = 40,message = "Email phải ít hơn hoặc bằng 40 ký tự")
     private String email;
 
