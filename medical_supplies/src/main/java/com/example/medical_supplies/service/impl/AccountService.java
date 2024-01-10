@@ -44,8 +44,8 @@ public class AccountService implements IAccountService {
      * @date: 10/01/2024
      * @param account The account to be updated.
      */
-//    @Override
-//    public Account getAccountByEmail(String email) {
-//        return accountRepository.getAccountByEmail(email);
-//    }
+    @Override
+    public Account getAccountByEmail(String email) {
+        return accountRepository.getAccountByEmail(email);
+    }
 }

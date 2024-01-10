@@ -1,5 +1,6 @@
 package com.example.medical_supplies.model.product;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -12,8 +13,8 @@ public class Productions {
     private Long id;
 
     private String nameProductions;
-
-    @OneToMany(mappedBy = "products")
+    @JsonBackReference
+    @OneToMany(mappedBy = "productions")
     private Set<Products> products;
 
     public Productions() {
