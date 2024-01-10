@@ -8,9 +8,16 @@ import org.springframework.data.repository.query.Param;
 
 public interface IEmployeeRepository extends JpaRepository <Employee,Integer> {
 
+    /**
+     * Get Information Employee by Phone
+     * @author: TrungND
+     * @date: 10-01-2024
+     * @param phone to find employee
+     * @return Optional<Employee>
+     */
+
 @Query(value = "select * from employees where phone = :phone",nativeQuery = true)
     Employee findEmployeeByPhone(@Param("phone") String phone);
-
 
     @Transactional
     @Modifying

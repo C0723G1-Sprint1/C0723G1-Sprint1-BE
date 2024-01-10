@@ -23,7 +23,13 @@ import java.util.Map;
 public class EmployeeController {
     @Autowired
     private IEmployeeService employeeService;
-
+    /**
+     * method updateEmployee
+     * create by TrungND
+     * date 1-10-2024
+     * param :id
+     * return ResponseEntity and employee or null
+     */
     @PostMapping
     public ResponseEntity<?> updateEmployee(@Valid @RequestBody EmployeeDTO employeeDTO, @PathVariable Integer id, BindingResult bindingResult) {
         Employee employee = employeeService.findEmployeeById(id);
