@@ -1,5 +1,6 @@
 package com.example.medical_supplies.controller.auth;
 
+import com.example.medical_supplies.dto.auth.AccountDTO;
 import com.example.medical_supplies.model.auth.Account;
 import com.example.medical_supplies.model.auth.MyUserDetail;
 import com.example.medical_supplies.security.jwt.JwtUtils;
@@ -45,16 +46,16 @@ public class AuthController {
     /**
      * Handles user login requests.
      *
-     * @param login         The login request object.
+     * @param accountDTO  The login request object.
      * @param bindingResult The result of the validation.
      * @return ResponseEntity containing the JWT response or map error messages.
      * @author: NamND
      * @date: 10/01/2024
      */
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody Login login, BindingResult bindingResult) {
+    public ResponseEntity<?> login(@Valid @RequestBody AccountDTO accountDTO, BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
-        login.validate(login, bindingResult);
+        accountDTO.validate(accountDTO, bindingResult);
         if (bindingResult.hasErrors()) {
             for (FieldError error : bindingResult.getFieldErrors()) {
                 errors.put(error.getField(), error.getDefaultMessage());
