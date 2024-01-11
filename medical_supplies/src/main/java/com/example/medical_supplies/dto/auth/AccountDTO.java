@@ -10,14 +10,30 @@ import lombok.NoArgsConstructor;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountDTO implements Validator {
-    private String code;
-    @NotBlank(message = "Tên nhân viên không được để trống.")
+    private static final String REGEX_NAME = "^[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+ [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+(?: [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*)*$";
+    @NotBlank(message = "Email không được để trống.")
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$",message = "Email sai định dạng.")
+    @Size(min = 15,message = "Mật khẩu phải từ 15 kí tự")
+    @Size(max = 40,message = "Email phải ít hơn hoặc bằng 45 ký tự")
+    private String email;
+
+    @NotBlank(message = "Mật khẩu không được để trống.")
+    @Pattern(regexp = "^\\w+$",message = "Mật khẩu không chứa ký tự đặc biệt.")
     @Size(min = 8,message = "Mật khẩu phải từ 8 kí tự")
     @Size(max = 20,message = "Mật khẩu phải ít hơn hoặc bằng 20 ký tự")
+    private String password;
+    @NotBlank(message = "Tên nhân viên không được để trống.")
+    @Pattern(regexp = REGEX_NAME,message = "Tên không chứa ký tự đặc biệt.")
+    @Size(max = 20,message = "Mật khẩu phải ít hơn hoặc bằng 50 ký tự")
     private String name;
+    @NotBlank(message = "Tên nhân viên không được để trống.")
     private String birthday;
     @NotBlank(message = "Số điện thoại không được để trống.")
     @Pattern(regexp = "^(01|03|04|05|07|08|09)\\d{8}$",message = "Email sai định dạng.")
@@ -25,14 +41,22 @@ public class AccountDTO implements Validator {
     @NotBlank(message = "Địa chỉ không được để trống.")
     private String address;
     private Boolean gender;
-    private Integer id_role;
+    private Integer idRole;
 
-    public String getCode() {
-        return code;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -75,12 +99,12 @@ public class AccountDTO implements Validator {
         this.gender = gender;
     }
 
-    public Integer getId_role() {
-        return id_role;
+    public Integer getIdRole() {
+        return idRole;
     }
 
-    public void setId_role(Integer id_role) {
-        this.id_role = id_role;
+    public void setIdRole(Integer idRole) {
+        this.idRole = idRole;
     }
 
     @Override
@@ -90,6 +114,18 @@ public class AccountDTO implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-
+        AccountDTO accountDTO = (AccountDTO) target;
+        if (!checkDob(accountDTO.getBirthday())) {
+            errors.rejectValue("birthday", null, "Nhân viên phải đủ 18 tuổi");
+        }
+    }
+    public boolean checkDob(String birthdayCus) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dob = LocalDate.parse(birthdayCus, formatter);
+        LocalDate currentDate = LocalDate.now();
+        Period age = Period.between(dob, currentDate);
+        if (age.getYears() >= 18) {
+            return true;
+        } else return false;
     }
 }

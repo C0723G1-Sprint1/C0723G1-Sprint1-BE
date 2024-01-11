@@ -27,7 +27,9 @@ public interface IAccountService {
      * Get Account By Email.
      * @author: NamND
      * @date: 10/01/2024
-     * @param email The account to be saved.
+     * @param account The account to be saved.
+     * @return account if true, otherwise null
      */
-//    Account getAccountByEmail(String email);
+    Account addAccount(Account account);
+    void addAccountRole (int idAccount,int idRole);
 }

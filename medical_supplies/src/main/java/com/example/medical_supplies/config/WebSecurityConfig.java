@@ -104,7 +104,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/employee/**").permitAll()
 //                                .requestMatchers("/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
 //                                .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
-//                                .requestMatchers("/api/home/**").permitAll()
+                                .requestMatchers("/api/register").permitAll()
 //                                .requestMatchers("/api/recoverPassword").permitAll()
 //                                .requestMatchers("/api/sendMail", "/api/customerType","/api/resetPassword/**").permitAll()
 //                        Trang cần có quyền hợp lệ
