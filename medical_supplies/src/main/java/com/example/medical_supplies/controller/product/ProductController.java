@@ -8,11 +8,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("api/products")
+@RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired
@@ -30,7 +31,23 @@ public class ProductController {
         if (productPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-            return new ResponseEntity<>(productPage, HttpStatus.OK);
-        }
+        return new ResponseEntity<>(productPage, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<Products> getProductById(@PathVariable Long id , Model model){
+        Products products = this.iProductService.getProductById(id);
+        model.addAttribute("productDto",products);
+        return new  ResponseEntity<> (products,HttpStatus.OK);
+    }
+
+
+    @PostMapping("/create/product")
+    public String addProduct(Products products){
+        this.iProductService.createProduct(products);
+        return "HttpStatus.OK";
+    }
+
 
 }

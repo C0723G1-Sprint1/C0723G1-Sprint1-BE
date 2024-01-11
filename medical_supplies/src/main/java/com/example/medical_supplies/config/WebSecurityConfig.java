@@ -101,7 +101,7 @@ public class WebSecurityConfig {
 //                        Trang không cần đăng nhập
 //                                .requestMatchers("/api/news/**","/api/category").permitAll()
                                 .requestMatchers("/api/login").permitAll()
-                                .requestMatchers("/api/employee/**").permitAll()
+                                .requestMatchers("/api/employee/**","/api/products/**").permitAll()
 //                                .requestMatchers("/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
 //                                .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
 //                                .requestMatchers("/api/home/**").permitAll()
