@@ -100,7 +100,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
 //                                .requestMatchers("/api/news/**","/api/category").permitAll()
-//                                .requestMatchers("/api/login","/api/product/create").permitAll()
+                                .requestMatchers("/api/login").permitAll()
 //                                .requestMatchers("/api/invoice-details/**").permitAll()
 //                                .requestMatchers("/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
 //                                .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
