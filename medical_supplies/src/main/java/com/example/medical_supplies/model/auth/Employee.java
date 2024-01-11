@@ -23,6 +23,7 @@ public class Employee {
     @Column(nullable = false)
     private String address;
     private Boolean gender;
+    private String avatar;
     @OneToOne
     @JsonBackReference
     @JoinColumn(name = "id_account")
@@ -90,5 +91,13 @@ public class Employee {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

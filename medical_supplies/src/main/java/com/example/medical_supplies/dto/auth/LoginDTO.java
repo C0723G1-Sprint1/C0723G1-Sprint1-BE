@@ -20,9 +20,9 @@ public class LoginDTO implements Validator  {
     @Size(max = 40,message = "Email phải ít hơn hoặc bằng 40 ký tự")
     private String email;
 
-    @NotBlank(message = "Mật khẩu không được để trống.")
-    @Size(min = 8,message = "Mật khẩu phải từ 8 kí tự")
-    @Size(max = 20,message = "Mật khẩu phải ít hơn hoặc bằng 20 ký tự")
+//    @NotBlank(message = "Mật khẩu không được để trống.")
+//    @Size(min = 8,message = "Mật khẩu phải từ 8 kí tự")
+//    @Size(max = 20,message = "Mật khẩu phải ít hơn hoặc bằng 20 ký tự")
     private String password;
 
     public String getEmail() {

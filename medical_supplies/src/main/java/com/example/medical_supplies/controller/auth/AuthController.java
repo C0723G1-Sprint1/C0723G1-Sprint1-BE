@@ -20,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -43,12 +44,14 @@ public class AuthController {
 
     @Autowired
     private IAccountService accountService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     /**
      * Handles user login requests.
      *
-     * @param loginDTO  The login request object.
+     * @param loginDTO      The login request object.
      * @param bindingResult The result of the validation.
      * @return ResponseEntity containing the JWT response or map error messages.
      * @author: NamND
