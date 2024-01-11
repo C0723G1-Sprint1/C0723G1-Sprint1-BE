@@ -1,5 +1,8 @@
 package com.example.medical_supplies.controller.auth;
 
+import com.example.medical_supplies.dto.auth.AccountDTO;
+import com.example.medical_supplies.dto.auth.JwtResponse;
+import com.example.medical_supplies.dto.auth.LoginDTO;
 import com.example.medical_supplies.model.auth.Account;
 import com.example.medical_supplies.model.auth.MyUserDetail;
 import com.example.medical_supplies.security.jwt.JwtUtils;
@@ -16,6 +19,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -40,21 +44,23 @@ public class AuthController {
 
     @Autowired
     private IAccountService accountService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     /**
      * Handles user login requests.
      *
-     * @param login         The login request object.
+     * @param loginDTO      The login request object.
      * @param bindingResult The result of the validation.
      * @return ResponseEntity containing the JWT response or map error messages.
      * @author: NamND
      * @date: 10/01/2024
      */
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody Login login, BindingResult bindingResult) {
+    public ResponseEntity<?> login(@Valid @RequestBody LoginDTO loginDTO, BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
-        login.validate(login, bindingResult);
+        loginDTO.validate(loginDTO, bindingResult);
         if (bindingResult.hasErrors()) {
             for (FieldError error : bindingResult.getFieldErrors()) {
                 errors.put(error.getField(), error.getDefaultMessage());
@@ -62,8 +68,8 @@ public class AuthController {
             return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);
         }
         try {
-            myUserDetailService.loadUserByUsername(login.getUsername());
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword()));
+            myUserDetailService.loadUserByUsername(loginDTO.getEmail());
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getEmail(), loginDTO.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
             MyUserDetail myUserDetail = (MyUserDetail) authentication.getPrincipal();
 

@@ -29,5 +29,5 @@ public interface IAccountService {
      * @date: 10/01/2024
      * @param email The account to be saved.
      */
-    Account getAccountByEmail(String email);
+//    Account getAccountByEmail(String email);
 }

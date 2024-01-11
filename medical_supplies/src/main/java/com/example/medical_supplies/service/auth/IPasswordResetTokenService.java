@@ -4,8 +4,8 @@ import com.example.medical_supplies.model.auth.Account;
 
 
 public interface IPasswordResetTokenService {
-    void createPasswordResetTokenForUser(PasswordResetToken passwordResetToken);
-    Boolean existsByToken(String token);
-    PasswordResetToken getPasswordResetToken(String token);
-    PasswordResetToken getPasswordResetToken(Account account);
+//    void createPasswordResetTokenForUser(PasswordResetToken passwordResetToken);
+//    Boolean existsByToken(String token);
+//    PasswordResetToken getPasswordResetToken(String token);
+//    PasswordResetToken getPasswordResetToken(Account account);
 }
