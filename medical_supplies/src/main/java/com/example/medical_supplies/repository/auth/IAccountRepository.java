@@ -1,11 +1,9 @@
 package com.example.medical_supplies.repository.auth;
 
-import com.example.medical_supplies.model.auth.Account;
+import com.example.medical_supplies.controller.auth.model.auth.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -35,13 +33,13 @@ public interface IAccountRepository extends JpaRepository<Account,Long> {
      */
     @Query(value = "SELECT CASE WHEN COUNT(*) > 0 THEN TRUE ELSE FALSE END FROM accounts as a WHERE a.email = :email", nativeQuery = true)
     Boolean existsByEmail(@Param("email") String email);
-//
-//    /**
-//     * Get account by email
-//     * @author: NamND
-//     * @date: 10/01/2024
-//     * @param email The email of the account.
-//     */
-//    @Query(value = "SELECT accounts.* FROM accounts JOIN employees ON accounts.id = employees.id_account WHERE employees.email = :email", nativeQuery = true)
-//    Account getAccountByEmail(@Param("email") String email);
+
+    /**
+     * Get account by email
+     * @author: NamND
+     * @date: 10/01/2024
+     * @param email The email of the account.
+     */
+    @Query(value = "SELECT accounts.* FROM accounts JOIN employees ON accounts.id = employees.id_account WHERE employees.email = :email", nativeQuery = true)
+    Account getAccountByEmail(@Param("email") String email);
 }

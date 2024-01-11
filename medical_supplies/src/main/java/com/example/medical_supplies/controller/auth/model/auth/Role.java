@@ -1,4 +1,4 @@
-package com.example.medical_supplies.model.auth;
+package com.example.medical_supplies.controller.auth.model.auth;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

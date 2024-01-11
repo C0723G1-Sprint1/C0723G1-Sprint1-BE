@@ -1,7 +1,7 @@
 package com.example.medical_supplies.security.jwt;
 
 
-import com.example.medical_supplies.model.auth.MyUserDetail;
+import com.example.medical_supplies.controller.auth.model.auth.MyUserDetail;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

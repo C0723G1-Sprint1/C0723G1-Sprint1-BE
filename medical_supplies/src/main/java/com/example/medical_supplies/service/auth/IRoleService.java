@@ -1,6 +1,6 @@
 package com.example.medical_supplies.service.auth;
 
-import com.example.medical_supplies.model.auth.Role;
+import com.example.medical_supplies.controller.auth.model.auth.Role;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package com.example.medical_supplies.service.impl;
 
-import com.example.medical_supplies.model.auth.Role;
+import com.example.medical_supplies.controller.auth.model.auth.Role;
 import com.example.medical_supplies.repository.auth.IRoleRepository;
 import com.example.medical_supplies.service.auth.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;

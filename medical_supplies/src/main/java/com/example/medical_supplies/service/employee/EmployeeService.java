@@ -1,6 +1,6 @@
 package com.example.medical_supplies.service.employee;
 
-import com.example.medical_supplies.model.auth.Employee;
+import com.example.medical_supplies.controller.auth.model.auth.Employee;
 import com.example.medical_supplies.repository.employee.IEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

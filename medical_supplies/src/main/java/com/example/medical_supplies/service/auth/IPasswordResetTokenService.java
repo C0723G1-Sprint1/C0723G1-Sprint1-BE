@@ -1,7 +1,5 @@
 package com.example.medical_supplies.service.auth;
 
-import com.example.medical_supplies.model.auth.Account;
-
 
 public interface IPasswordResetTokenService {
 //    void createPasswordResetTokenForUser(PasswordResetToken passwordResetToken);

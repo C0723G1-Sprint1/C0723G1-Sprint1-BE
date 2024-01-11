@@ -1,4 +1,4 @@
-package com.example.medical_supplies.model.auth;
+package com.example.medical_supplies.controller.auth.model.auth;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

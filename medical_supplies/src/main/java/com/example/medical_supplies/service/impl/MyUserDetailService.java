@@ -1,7 +1,7 @@
 package com.example.medical_supplies.service.impl;
 
-import com.example.medical_supplies.model.auth.Account;
-import com.example.medical_supplies.model.auth.MyUserDetail;
+import com.example.medical_supplies.controller.auth.model.auth.Account;
+import com.example.medical_supplies.controller.auth.model.auth.MyUserDetail;
 import com.example.medical_supplies.repository.auth.IAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
