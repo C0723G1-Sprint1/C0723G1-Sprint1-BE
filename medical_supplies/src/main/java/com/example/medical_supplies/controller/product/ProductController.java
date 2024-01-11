@@ -1,19 +1,14 @@
 package com.example.medical_supplies.controller.product;
 
 import com.example.medical_supplies.model.product.Products;
-import com.example.medical_supplies.model.product.TypeProduct;
 import com.example.medical_supplies.service.product.IProductService;
-import com.example.medical_supplies.service.product.ITypeProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin("*")
 @RestController
