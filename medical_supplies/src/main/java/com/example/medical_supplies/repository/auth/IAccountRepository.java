@@ -1,6 +1,6 @@
 package com.example.medical_supplies.repository.auth;
 
-import com.example.medical_supplies.controller.auth.model.auth.Account;
+import com.example.medical_supplies.model.auth.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

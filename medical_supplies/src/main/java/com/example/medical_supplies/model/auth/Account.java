@@ -1,4 +1,4 @@
-package com.example.medical_supplies.controller.auth.model.auth;
+package com.example.medical_supplies.model.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

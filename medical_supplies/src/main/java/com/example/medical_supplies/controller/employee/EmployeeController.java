@@ -1,7 +1,7 @@
 package com.example.medical_supplies.controller.employee;
 
 import com.example.medical_supplies.dto.employee.EmployeeDTO;
-import com.example.medical_supplies.controller.auth.model.auth.Employee;
+import com.example.medical_supplies.model.auth.Employee;
 import com.example.medical_supplies.service.employee.IEmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;

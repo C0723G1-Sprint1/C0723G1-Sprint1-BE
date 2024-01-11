@@ -1,5 +1,5 @@
 package com.example.medical_supplies.repository.employee;
-import com.example.medical_supplies.controller.auth.model.auth.Employee;
+import com.example.medical_supplies.model.auth.Employee;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
