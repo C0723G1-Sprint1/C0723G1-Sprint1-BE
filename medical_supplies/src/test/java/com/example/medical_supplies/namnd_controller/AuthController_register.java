@@ -1,7 +1,6 @@
 package com.example.medical_supplies.namnd_controller;
 
 import com.example.medical_supplies.dto.auth.AccountDTO;
-import com.example.medical_supplies.dto.auth.LoginDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_email_13() throws Exception {
+    public void register_email_13() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail(null);
         accountDTO.setPassword("123456789");
@@ -55,7 +54,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_email_14() throws Exception {
+    public void register_email_14() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("");
         accountDTO.setPassword("123456789");
@@ -67,7 +66,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -81,9 +80,9 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_email_15() throws Exception {
+    public void register_email_15() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
-        accountDTO.setEmail("aerwe_gmail.com");
+        accountDTO.setEmail("ae34e_gmail.com");
         accountDTO.setPassword("123456789");
         accountDTO.setName("Nguyễn Kiều MY");
         accountDTO.setBirthday("2006-01-11");
@@ -93,7 +92,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -107,7 +106,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_email_16() throws Exception {
+    public void register_email_16() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("aerwe");
         accountDTO.setPassword("123456789");
@@ -119,7 +118,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -133,7 +132,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_email_17() throws Exception {
+    public void register_email_17() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("aerwedfgtrytrtdfgfhghgdfrtyhtrtrtrtrtrtrtrtrtfgdgrtytg@gmail.com");
         accountDTO.setPassword("123456789");
@@ -145,7 +144,32 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
+                                .content(this.objectMapper.writeValueAsString(accountDTO))
+                                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * @Creator: NamND
+     * @parameter email is not less than or equal to max length
+     * @Goal: HttpStatus = 4xx
+     * @Throw: Exception
+     */
+    @Test
+    public void register_email_99() throws Exception {
+        AccountDTO accountDTO = new AccountDTO();
+        accountDTO.setEmail("hongnhung123@gmail.com");
+        accountDTO.setPassword("123456789");
+        accountDTO.setName("Nguyễn Kiều MY");
+        accountDTO.setBirthday("2006-01-11");
+        accountDTO.setPhone("0833385469");
+        accountDTO.setAddress("Quảng Bình");
+        accountDTO.setGender(true);
+        accountDTO.setIdRole(1);
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -160,7 +184,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_password_13() throws Exception {
+    public void register_password_13() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword(null);
@@ -186,7 +210,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_password_14() throws Exception {
+    public void register_password_14() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("");
@@ -198,7 +222,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -212,7 +236,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_password_15() throws Exception {
+    public void register_password_15() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("12345@#$$#6789");
@@ -224,7 +248,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -238,7 +262,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_password_16() throws Exception {
+    public void register_password_16() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("12789");
@@ -250,7 +274,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -264,7 +288,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_password_17() throws Exception {
+    public void register_password_17() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("12345dfsdfdsfsdfsdfsdfsdfsdfsderewsae6789");
@@ -276,7 +300,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -291,7 +315,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_name_13() throws Exception {
+    public void register_name_13() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -317,7 +341,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_name_14() throws Exception {
+    public void register_name_14() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -329,7 +353,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -343,7 +367,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_name_15() throws Exception {
+    public void register_name_15() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -355,7 +379,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -369,7 +393,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_name_17() throws Exception {
+    public void register_name_17() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -381,7 +405,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -395,7 +419,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_birthday_14_birthday_13() throws Exception {
+    public void register_birthday_13() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -421,7 +445,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_birthday_14() throws Exception {
+    public void register_birthday_14() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -433,7 +457,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -446,7 +470,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_birthday_98() throws Exception {
+    public void register_birthday_98() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -458,7 +482,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -472,7 +496,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_phone_13() throws Exception {
+    public void register_phone_13() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -498,7 +522,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_phone_14() throws Exception {
+    public void register_phone_14() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -510,7 +534,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -523,7 +547,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_phone_15() throws Exception {
+    public void register_phone_15() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -535,7 +559,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -549,7 +573,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_address_13() throws Exception {
+    public void register_address_13() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -575,7 +599,7 @@ public class AuthController_register {
      * @Throw: Exception
      */
     @Test
-    public void regester_address_14() throws Exception {
+    public void register_address_14() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setEmail("thanhtam123@gmail.com");
         accountDTO.setPassword("tam123456789");
@@ -587,7 +611,32 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
+                                .content(this.objectMapper.writeValueAsString(accountDTO))
+                                .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+    /**
+     * @Creator: NamND
+     * @parameter id role equals null
+     * @Goal: HttpStatus = 4xx
+     * @Throw: Exception
+     */
+    @Test
+    public void register_idRole_13() throws Exception {
+        AccountDTO accountDTO = new AccountDTO();
+        accountDTO.setEmail("thanhtam123@gmail.com");
+        accountDTO.setPassword("tam123456789");
+        accountDTO.setName("Võ Thanh Tâm");
+        accountDTO.setBirthday("2006-01-11");
+        accountDTO.setPhone("0833385469");
+        accountDTO.setAddress("Quảng Bình");
+        accountDTO.setGender(true);
+        accountDTO.setIdRole(null);
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
@@ -599,16 +648,16 @@ public class AuthController_register {
 
     /**
      * @Creator: NamND
-     * @parameter regester successful
+     * @parameter register successful
      * @Goal: HttpStatus = 2xx
      * @Throw:
      */
     @Test
-    public void regester_18() throws Exception {
+    public void register_18() throws Exception {
         AccountDTO accountDTO = new AccountDTO();
-        accountDTO.setEmail("thanhtam123@gmail.com");
+        accountDTO.setEmail("thanhlan123@gmail.com");
         accountDTO.setPassword("tam123456789");
-        accountDTO.setName("Võ Thanh Tâm");
+        accountDTO.setName("Võ Thanh Tịnh");
         accountDTO.setBirthday("2006-01-11");
         accountDTO.setPhone("0833334469");
         accountDTO.setAddress("Quảng Bình");
@@ -616,7 +665,7 @@ public class AuthController_register {
         accountDTO.setIdRole(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .post("/api/regester")
+                                .post("/api/register")
                                 .content(this.objectMapper.writeValueAsString(accountDTO))
                                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())

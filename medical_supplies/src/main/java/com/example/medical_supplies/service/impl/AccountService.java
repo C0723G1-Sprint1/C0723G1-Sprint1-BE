@@ -26,18 +26,6 @@ public class AccountService implements IAccountService {
         return accountRepository.findByEmail(email);
     }
 
-    /**
-     * This method checks if an account exists by username.
-     * @author: NamND
-     * @date: 10/01/2024
-     * @param email The username.
-     * @return true if the account exists, false otherwise.
-     */
-    @Override
-    public Boolean existsByEmail(String email) {
-
-        return accountRepository.existsByEmail(email);
-    }
 
     @Override
     public Account addAccount(Account account) {

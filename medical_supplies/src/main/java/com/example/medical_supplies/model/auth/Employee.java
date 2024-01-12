@@ -23,6 +23,7 @@ public class Employee {
     private String phone;
     @Column(nullable = false)
     private String address;
+    @Column(columnDefinition = "true")
     private Boolean gender;
     private String avatar;
     @OneToOne

@@ -21,7 +21,7 @@ public interface IAccountService {
      * @param email The email.
      * @return true if the account exists, false otherwise.
      */
-    Boolean existsByEmail(String email);
+//    Boolean existsByEmail(String email);
 
     /**
      * Get Account By Email.

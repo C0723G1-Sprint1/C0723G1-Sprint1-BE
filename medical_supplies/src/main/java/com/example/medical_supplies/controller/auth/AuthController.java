@@ -58,7 +58,7 @@ public class AuthController {
     /**
      * Handles user login requests.
      *
-     * @param accountDTO  The login request object.
+     * @param loginDTO      The login request object.
      * @param bindingResult The result of the validation.
      * @return ResponseEntity containing the JWT response or map error messages.
      * @author: NamND
@@ -88,7 +88,7 @@ public class AuthController {
             String jwt = jwtProvider.createToken((MyUserDetail) authentication.getPrincipal());
             jwtResponse.setAccessToken(jwt);
 
-            // Lấy ra name Role trả về
+//             Lấy ra name Role trả về
             List<String> roles = myUserDetail.getAuthorities().stream()
                     .map(item -> item.getAuthority())
                     .collect(Collectors.toList());
@@ -104,47 +104,48 @@ public class AuthController {
     /**
      * Register .
      *
-     * @param accountDTO      The register request object.
+     * @param accountDTO    The register request object.
      * @param bindingResult The result of the validation.
+     * @return Messages successful or map error messages.
      * @author: NamND
      * @date: 11/01/2024
-     * @return Messages successful or map error messages.
      */
-    @PostMapping("register")
+    @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody AccountDTO accountDTO, BindingResult bindingResult) {
         Map<String, String> accountDtoMap = new HashMap<>();
         new AccountDTO().validate(accountDTO, bindingResult);
-        if (accountService.findByEmail(accountDTO.getEmail()).isPresent()){
-            accountDtoMap.put("email","Email đã tồn tại");
+        if (accountService.findByEmail(accountDTO.getEmail()).isPresent()) {
+            accountDtoMap.put("email", "Email đã tồn tại");
         }
         if (bindingResult.hasErrors()) {
             for (FieldError err : bindingResult.getFieldErrors()) {
                 accountDtoMap.put(err.getField(), err.getDefaultMessage());
             }
         }
-        if (accountDtoMap.size() != 0) {
-            return new ResponseEntity<>(accountDtoMap, HttpStatus.CREATED);
-        }
-        Account account = new Account();
-        BeanUtils.copyProperties(accountDTO,account);
-        account.setPassword(passwordEncoder.encode(account.getPassword()));
+        if (accountDtoMap.size() == 0) {
+
+            Account account = new Account();
+            BeanUtils.copyProperties(accountDTO, account);
+            account.setPassword(passwordEncoder.encode(account.getPassword()));
 //        Thêm account
-        Account accountNew = accountService.addAccount(account);
-        if (accountNew==null){
-            return new ResponseEntity<>("Thêm tài khoản thất bại.", HttpStatus.BAD_REQUEST);
-        }
-        //        Thêm account_role
-        Role role = new Role();
-        BeanUtils.copyProperties(accountDTO,role);
-        accountService.addAccountRole(accountNew.getId(),role.getIdRole());
+            Account accountNew = accountService.addAccount(account);
+            if (accountNew == null) {
+                return new ResponseEntity<>("Thêm tài khoản thất bại.", HttpStatus.BAD_REQUEST);
+            }
+            //        Thêm account_role
+            Role role = new Role();
+            BeanUtils.copyProperties(accountDTO, role);
+            accountService.addAccountRole(accountNew.getId(), role.getIdRole());
 
 //        Thêm employee
-          Employee employee = new Employee();
-          BeanUtils.copyProperties(accountDTO,employee);
-          employee.setCode(CodeEmployeeGenerator.generateCode());
-          employee.setAccount(accountNew);
-          employeeService.addEmployee(employee);
-        return new ResponseEntity<>("Thêm tài khoản thành công", HttpStatus.OK);
+            Employee employee = new Employee();
+            BeanUtils.copyProperties(accountDTO, employee);
+            employee.setCode(CodeEmployeeGenerator.generateCode());
+            employee.setAccount(accountNew);
+            employeeService.addEmployee(employee);
+            return new ResponseEntity<>("Thêm tài khoản thành công", HttpStatus.OK);
+        }
+        return new ResponseEntity<>(accountDtoMap, HttpStatus.BAD_REQUEST);
     }
 
 }

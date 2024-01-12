@@ -26,16 +26,6 @@ public interface IAccountRepository extends JpaRepository<Account,Long> {
     @Query(value = "SELECT * FROM accounts as a WHERE a.email = :email", nativeQuery = true)
     Optional<Account> findByEmail(@Param("email") String email);
 
-    /**
-     * Check exist Account by email
-     * @author: NamND
-     * @date: 10/01/2024
-     * @param email to find email
-     * @return Boolean
-     */
-    @Query(value = "SELECT CASE WHEN COUNT(*) > 0 THEN TRUE ELSE FALSE END FROM accounts as a WHERE a.email = :email", nativeQuery = true)
-    Boolean existsByEmail(@Param("email") String email);
-
     @Query(value = "SELECT accounts.* FROM accounts WHERE email = :email", nativeQuery = true)
     Account getAccountByEmail(@Param("email") String email);
     @Transactional
