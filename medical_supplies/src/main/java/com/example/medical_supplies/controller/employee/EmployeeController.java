@@ -33,7 +33,6 @@ public class EmployeeController {
         Employee employee = employeeService.findEmployeeById(id);
         if (employee == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
         }
         Map<String, String> employeeDtoMap = new HashMap<>();
         new EmployeeDTO().validate(employeeDTO, bindingResult);
@@ -47,6 +46,7 @@ public class EmployeeController {
             for (FieldError err : bindingResult.getFieldErrors()) {
                 employeeDtoMap.put(err.getField(), err.getDefaultMessage());
             }
+            return new ResponseEntity<>(bindingResult.getAllErrors().toString(),HttpStatus.NOT_ACCEPTABLE);
         }
         if (employeeDtoMap.size() != 0) {
             return new ResponseEntity<>(employeeDtoMap, HttpStatus.CREATED);

@@ -16,12 +16,12 @@ public interface IEmployeeRepository extends JpaRepository <Employee,Integer> {
      * @return Optional<Employee>
      */
 
-@Query(value = "select * from employees where phone = :phone",nativeQuery = true)
+@Query(value = "select * from employee where phone = :phone",nativeQuery = true)
     Employee findEmployeeByPhone(@Param("phone") String phone);
 
     @Transactional
     @Modifying
-    @Query(value = "update employees set name = :#{#employee.name}, gender = :#{#employee.gender}, birthday = :#{#employee.birthday}, " +
+    @Query(value = "update employee set name = :#{#employee.name}, gender = :#{#employee.gender}, birthday = :#{#employee.birthday}, " +
             "phone = :#{#employee.phone}, address = :#{#employee.address} " +
             "WHERE id = :#{#employee.id}",nativeQuery = true)
     void editEmployeeRepo(@Param("employee") Employee employee);
