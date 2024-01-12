@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface IProductRepository extends JpaRepository<Products,Long> {
+public interface IProductRepository extends JpaRepository<Products,Integer> {
 
-    @Query(value = "select * from products",nativeQuery = true)
+    @Query(value = "select * from products ",nativeQuery = true)
     Page<Products> findAllProduct(Pageable pageable);
 }

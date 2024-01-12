@@ -6,5 +6,5 @@ import com.example.medical_supplies.model.product.TypeProduct;
 import java.util.List;
 
 public interface IProductions {
-    List<Productions> findAllProductions();
+
 }

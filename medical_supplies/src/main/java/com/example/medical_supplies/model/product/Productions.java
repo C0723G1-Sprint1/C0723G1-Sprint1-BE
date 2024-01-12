@@ -10,7 +10,7 @@ public class Productions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String nameProductions;
     @JsonBackReference
@@ -20,17 +20,17 @@ public class Productions {
     public Productions() {
     }
 
-    public Productions(Long id, String nameProductions, Set<Products> products) {
+    public Productions(Integer id, String nameProductions, Set<Products> products) {
         this.id = id;
         this.nameProductions = nameProductions;
         this.products = products;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -10,11 +10,4 @@ import java.util.List;
 @Service
 public class ProductionsService implements IProductions{
 
-    @Autowired
-    private IProductionsRepository iProductionsRepository;
-
-    @Override
-    public List<Productions> findAllProductions() {
-        return iProductionsRepository.findAllProductions();
-    }
 }
