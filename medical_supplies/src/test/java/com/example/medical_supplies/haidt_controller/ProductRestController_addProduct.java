@@ -26,9 +26,9 @@ public class ProductRestController_addProduct {
         products.setPrice(100.000);
         products.setQuantity(10);
         products.setSupplier("sdvhslv");
-        products.setAvatar_one("svsvsdvsd");
-        products.setAvatar_two("svsvsdvsd");
-        products.setMain_avatar("svsvsdvsd");
+        products.setAvatarOne("svsvsdvsd");
+        products.setAvatarTwo("svsvsdvsd");
+        products.setMainAvatar("svsvsdvsd");
         products.setIngredient("dvsvvdvsd");
         products.setTypeProduct(typeProduct);
 
