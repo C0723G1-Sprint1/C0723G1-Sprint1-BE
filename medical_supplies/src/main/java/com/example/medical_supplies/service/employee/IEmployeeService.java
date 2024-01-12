@@ -27,4 +27,14 @@ public interface IEmployeeService {
      * return :
      */
     void editEmployeeRepo(Employee employee);
+
+    /**
+     * Add employee
+     * @author: NamND
+     * @date: 11/01/2024
+     * @param employee The employee.
+     * @return emploue if adding new employee successfully,otherwise null
+     */
+    void addEmployee(Employee employee);
+
 }

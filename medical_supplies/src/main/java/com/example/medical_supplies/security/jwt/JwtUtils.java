@@ -2,13 +2,20 @@ package com.example.medical_supplies.security.jwt;
 
 
 import com.example.medical_supplies.model.auth.MyUserDetail;
+import com.example.medical_supplies.model.auth.Role;
+import com.example.medical_supplies.service.impl.MyUserDetailService;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * This class provides utility methods for JWT token generation, validation, and extraction.
@@ -17,8 +24,10 @@ import java.util.Date;
  */
 @Component
 public class JwtUtils {
+    @Autowired
+    private MyUserDetailService myUserDetailService;
     private static final String SECRET_KEY = "======================C0723G1===========================";
-    private static final long EXPIRE_TIME = 86400000000L;
+    private static final long EXPIRE_TIME = 86400000L;
 
 
     /**
@@ -46,11 +55,17 @@ public class JwtUtils {
      * @return The JWT token.
      */
     public String generateTokenFromEmail(String email) {
+//        Chuyển đổi role thành chuỗi token
+//        MyUserDetail myUserDetail = (MyUserDetail) myUserDetailService.loadUserByUsername(email);
+//        Map<String,Object> claims = new HashMap<>();
+//        claims.put("roles", myUserDetail.getAuthorities());
+
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + EXPIRE_TIME))
                 .signWith(key(), SignatureAlgorithm.HS256)
+//                .addClaims(claims)
                 .compact();
     }
 

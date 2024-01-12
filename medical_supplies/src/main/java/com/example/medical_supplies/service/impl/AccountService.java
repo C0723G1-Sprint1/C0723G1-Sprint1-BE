@@ -26,26 +26,25 @@ public class AccountService implements IAccountService {
         return accountRepository.findByEmail(email);
     }
 
-    /**
-     * This method checks if an account exists by username.
-     * @author: NamND
-     * @date: 10/01/2024
-     * @param email The username.
-     * @return true if the account exists, false otherwise.
-     */
+
     @Override
-    public Boolean existsByEmail(String email) {
-        return accountRepository.existsByEmail(email);
+    public Account addAccount(Account account) {
+        try {
+            accountRepository.addAccount(account);
+           Account accountNew =  accountRepository.getAccountByEmail(account.getEmail());
+            return accountNew;
+        }catch (Exception e){
+            return null;
+        }
+    }
+    @Override
+    public void addAccountRole(int idAccount,int idRole ) {
+        try {
+            accountRepository.addAccountRole(idAccount,idRole);
+        }catch (Exception e){
+            e.getMessage();
+        }
+
     }
 
-    /**
-     * This method update Password an account.
-     * @author: NamND
-     * @date: 10/01/2024
-     * @param account The account to be updated.
-     */
-//    @Override
-//    public Account getAccountByEmail(String email) {
-//        return accountRepository.getAccountByEmail(email);
-//    }
 }
