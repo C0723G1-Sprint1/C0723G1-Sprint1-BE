@@ -14,7 +14,7 @@ import java.util.Optional;
  * @author: NamND
  * @date: 10/01/2024
  */
-public interface IRoleRepository extends JpaRepository<Role, Long> {
+public interface IRoleRepository extends JpaRepository<Role, Integer> {
 
     /**
      * Get Role by role
@@ -24,9 +24,10 @@ public interface IRoleRepository extends JpaRepository<Role, Long> {
      * @author: NamND
      * @date: 10/01/2024
      */
-    @Query(value = "SELECT * FROM roles WHERE role = :role", nativeQuery = true)
+    @Query(value = "SELECT * FROM role WHERE role = :role", nativeQuery = true)
     Optional<Role> findByRole(@Param("role") String role);
 
-    @Query(value = "SELECT * FROM roles", nativeQuery = true)
+    @Query(value = "SELECT * FROM role" +
+            "", nativeQuery = true)
     List<Role> findAll();
 }

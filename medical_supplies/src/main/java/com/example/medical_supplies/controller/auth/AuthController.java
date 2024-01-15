@@ -35,6 +35,7 @@ import java.util.stream.Collectors;
 
 @RequestMapping("/api")
 @RestController
+@CrossOrigin("*")
 public class AuthController {
     @Autowired
     private MyUserDetailService myUserDetailService;
@@ -72,7 +73,7 @@ public class AuthController {
             for (FieldError error : bindingResult.getFieldErrors()) {
                 errors.put(error.getField(), error.getDefaultMessage());
             }
-            return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("Thông tin đăng nhập không chính xác", HttpStatus.UNAUTHORIZED);
         }
         try {
             myUserDetailService.loadUserByUsername(loginDTO.getEmail());
@@ -89,10 +90,10 @@ public class AuthController {
             jwtResponse.setAccessToken(jwt);
 
 //             Lấy ra name Role trả về
-            List<String> roles = myUserDetail.getAuthorities().stream()
-                    .map(item -> item.getAuthority())
-                    .collect(Collectors.toList());
-            jwtResponse.setRoles(roles);
+//            List<String> roles = myUserDetail.getAuthorities().stream()
+//                    .map(item -> item.getAuthority())
+//                    .collect(Collectors.toList());
+//            jwtResponse.setRoles(roles);
             return new ResponseEntity<>(jwtResponse, HttpStatus.OK);
         } catch (UsernameNotFoundException e) {
             return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);
@@ -145,7 +146,7 @@ public class AuthController {
             employeeService.addEmployee(employee);
             return new ResponseEntity<>("Thêm tài khoản thành công", HttpStatus.OK);
         }
-        return new ResponseEntity<>(accountDtoMap, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(accountDtoMap, HttpStatus.OK);
     }
 
 }
