@@ -1,6 +1,7 @@
 package com.example.medical_supplies.controller.auth;
 
 import com.example.medical_supplies.dto.auth.AccountDTO;
+import com.example.medical_supplies.dto.auth.ChangePasswordDTO;
 import com.example.medical_supplies.dto.auth.JwtResponse;
 import com.example.medical_supplies.dto.auth.LoginDTO;
 import com.example.medical_supplies.model.auth.Account;
@@ -90,6 +91,38 @@ public class AuthController {
             return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);
+        }
+    }
+    /**
+     * method changePassword
+     * create by TrungND
+     * date 11-1-2024
+     * param : changPasswordDTO, bindingResult
+     * return:  ResponseEntity response or map errors message
+     */
+    @PatchMapping("/changePassword")
+    public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePasswordDTO changePasswordDTO, BindingResult bindingResult, Principal principal) {
+        Map<String, String> errors = new HashMap<>();
+        if (changePasswordDTO.getNewPassword()==null || changePasswordDTO.getNewPassword().equals("")){
+            errors.put("newPassword", "Mật khẩu mới không được trống hoặc null");
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        }
+        changePasswordDTO.validate(changePasswordDTO, bindingResult);
+        if (bindingResult.hasErrors()) {
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errors.put(error.getField(), error.getDefaultMessage());
+            }
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        }
+        try {
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken("hongnhung123@gmail.com", changePasswordDTO.getPassword()));
+            Account account = accountService.findByEmail(authentication.getName()).get();
+            account.setPassword(passwordEncoder.encode(changePasswordDTO.getNewPassword()));
+            accountService.updatePassword(account);
+            return new ResponseEntity<>("Doi mat khau thanh cong!", HttpStatus.OK);
+        } catch (BadCredentialsException e) {
+            errors.put("password", "Mat khau cu khong chinh xac.");
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
     }
 

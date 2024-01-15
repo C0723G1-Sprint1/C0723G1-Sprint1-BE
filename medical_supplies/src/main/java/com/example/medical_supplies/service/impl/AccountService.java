@@ -38,6 +38,11 @@ public class AccountService implements IAccountService {
         return accountRepository.existsByEmail(email);
     }
 
+    @Override
+    public void updatePassword(Account account) {
+    accountRepository.updatePasswordAccount(account.getEmail(),account.getPassword());
+    }
+
     /**
      * This method update Password an account.
      * @author: NamND

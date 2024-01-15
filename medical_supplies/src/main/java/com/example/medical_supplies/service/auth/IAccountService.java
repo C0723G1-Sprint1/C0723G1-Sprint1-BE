@@ -23,6 +23,8 @@ public interface IAccountService {
      */
     Boolean existsByEmail(String email);
 
+    void updatePassword(Account account);
+
     /**
      * Get Account By Email.
      * @author: NamND

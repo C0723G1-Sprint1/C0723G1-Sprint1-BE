@@ -27,4 +27,6 @@ public interface IEmployeeService {
      * return :
      */
     void editEmployeeRepo(Employee employee);
+
+    void save(Employee employee);
 }

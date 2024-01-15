@@ -21,10 +21,11 @@ import java.util.Map;
 public class EmployeeController {
     @Autowired
     private IEmployeeService employeeService;
+
     /**
      * method updateEmployee
      * create by TrungND
-     * date 1-10-2024
+     * date 10-1-2024
      * param :id
      * return ResponseEntity and employee or null
      */
@@ -46,7 +47,7 @@ public class EmployeeController {
             for (FieldError err : bindingResult.getFieldErrors()) {
                 employeeDtoMap.put(err.getField(), err.getDefaultMessage());
             }
-            return new ResponseEntity<>(bindingResult.getAllErrors().toString(),HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(bindingResult.getAllErrors().toString(), HttpStatus.NOT_ACCEPTABLE);
         }
         if (employeeDtoMap.size() != 0) {
             return new ResponseEntity<>(employeeDtoMap, HttpStatus.CREATED);
@@ -55,6 +56,24 @@ public class EmployeeController {
         employee.setId(id);
         employeeService.editEmployeeRepo(employee);
         return new ResponseEntity<>(employee, HttpStatus.OK);
+    }
+
+    /**
+     * method getEmployeeById
+     * create by TrungND
+     * date 10-1-2024
+     * param :id
+     * return ResponseEntity and employee or null
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getEmployeeById(@PathVariable int id) {
+        Employee employee = employeeService.findEmployeeById(id);
+        if (employee == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            employeeService.save(employee);
+            return new ResponseEntity<>(employee, HttpStatus.OK);
+        }
     }
 
 }
