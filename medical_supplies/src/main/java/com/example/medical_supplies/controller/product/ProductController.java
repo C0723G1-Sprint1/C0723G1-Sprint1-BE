@@ -1,5 +1,6 @@
 package com.example.medical_supplies.controller.product;
 
+import com.example.medical_supplies.dto.product.ProductDTO;
 import com.example.medical_supplies.model.product.Products;
 import com.example.medical_supplies.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +9,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("api/products")
+@RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired
@@ -30,7 +32,43 @@ public class ProductController {
         if (productPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-            return new ResponseEntity<>(productPage, HttpStatus.OK);
-        }
+        return new ResponseEntity<>(productPage, HttpStatus.OK);
+    }
 
+
+    @PostMapping("/create")
+    public ResponseEntity<Void> addProduct(@RequestBody ProductDTO productDTO, BindingResult bindingResult){
+        new ProductDTO().validate(productDTO,bindingResult);
+        if (bindingResult.hasErrors()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        boolean status = iProductService.createProduct(productDTO);
+        if (!status){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @PatchMapping("/update")
+    public ResponseEntity<?> updateProduct(@RequestBody ProductDTO productDTO, BindingResult bindingResult){
+        new ProductDTO().validate(productDTO,bindingResult);
+        if (bindingResult.hasErrors()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        boolean status = iProductService.updateProduct(productDTO);
+        if (!status){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/details/{id}")
+    public ResponseEntity<?> detailsProduct(@PathVariable Integer id){
+        Products products = iProductService.getProductById(id);
+        if (products == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(products,HttpStatus.OK);
+    }
 }

@@ -111,6 +111,12 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/**").permitAll()
 //                                .requestMatchers("/api/recoverPassword").permitAll()
 //                                .requestMatchers("/api/sendMail", "/api/customerType","/api/resetPassword/**").permitAll()
+                                .requestMatchers("/api/employee/**","/api/products/**","/api/productions/**","/api/type_products/**").permitAll()
+                                .requestMatchers("/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
+                                .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
+                                .requestMatchers("/api/home/**").permitAll()
+                                .requestMatchers("/api/recoverPassword").permitAll()
+                                .requestMatchers("/api/sendMail", "/api/customerType","/api/resetPassword/**").permitAll()
 //                        Trang cần có quyền hợp lệ
 
 //                                .requestMatchers("/api/**","/api/notification/view", "/api/customer/**", "/api/customerType","/api/overview/**").hasAnyRole("ADMIN", "ACCOUNTANT", "SALESMAN")

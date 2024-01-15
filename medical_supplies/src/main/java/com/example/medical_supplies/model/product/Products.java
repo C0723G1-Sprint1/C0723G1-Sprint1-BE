@@ -8,7 +8,7 @@ public class Products {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String name;
 
@@ -20,11 +20,11 @@ public class Products {
 
     private String ingredient;
 
-    private String main_avatar;
+    private String mainAvatar;
 
-    private String avatar_one;
+    private String avatarOne;
 
-    private String avatar_two;
+    private String avatarTwo;
 
 
     @ManyToOne
@@ -39,25 +39,25 @@ public class Products {
     public Products() {
     }
 
-    public Products(Long id, String name, Double price, Integer quantity, String supplier, String ingredient, String main_avatar, String avatar_one, String avatar_two, TypeProduct typeProduct, Productions productions) {
+    public Products(Integer id, String name, Double price, Integer quantity, String supplier, String ingredient, String mainAvatar, String avatarOne, String avatarTwo, TypeProduct typeProduct, Productions productions) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.supplier = supplier;
         this.ingredient = ingredient;
-        this.main_avatar = main_avatar;
-        this.avatar_one = avatar_one;
-        this.avatar_two = avatar_two;
+        this.mainAvatar = mainAvatar;
+        this.avatarOne = avatarOne;
+        this.avatarTwo = avatarTwo;
         this.typeProduct = typeProduct;
         this.productions = productions;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -101,28 +101,28 @@ public class Products {
         this.ingredient = ingredient;
     }
 
-    public String getMain_avatar() {
-        return main_avatar;
+    public String getMainAvatar() {
+        return mainAvatar;
     }
 
-    public void setMain_avatar(String main_avatar) {
-        this.main_avatar = main_avatar;
+    public void setMainAvatar(String mainAvatar) {
+        this.mainAvatar = mainAvatar;
     }
 
-    public String getAvatar_one() {
-        return avatar_one;
+    public String getAvatarOne() {
+        return avatarOne;
     }
 
-    public void setAvatar_one(String avatar_one) {
-        this.avatar_one = avatar_one;
+    public void setAvatarOne(String avatarOne) {
+        this.avatarOne = avatarOne;
     }
 
-    public String getAvatar_two() {
-        return avatar_two;
+    public String getAvatarTwo() {
+        return avatarTwo;
     }
 
-    public void setAvatar_two(String avatar_two) {
-        this.avatar_two = avatar_two;
+    public void setAvatarTwo(String avatarTwo) {
+        this.avatarTwo = avatarTwo;
     }
 
     public TypeProduct getTypeProduct() {
