@@ -72,6 +72,6 @@ public class EmployeeController_FindEmployeeById {
                         MockMvcRequestBuilders
                                 .get("/api/employee/{id}","100"))
                 .andDo(print())
-                .andExpect(status().isNoContent());
+                .andExpect(status().isNotFound());
     }
 }
