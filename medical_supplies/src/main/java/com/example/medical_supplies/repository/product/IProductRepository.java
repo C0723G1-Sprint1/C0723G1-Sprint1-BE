@@ -10,12 +10,26 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.query.Param;
 
-@Repository
-public interface IProductRepository extends JpaRepository<Products, Long> {
+public interface IProductRepository extends JpaRepository<Products,Integer> {
 
+
+    /**
+     * Author: AnHN.
+     * This is the method to get the product list and search by name
+     * return ResponseEntity and product or null
+     */
+
+    @Query(value = "select p.*,ty.name_type_product,pr.name_productions from products p join type_product ty on p.id_type_product = ty.id " +
+            "join productions pr on p.id_production = pr.id where p.name like :nameSearch and ty.name_type_product like :typeProduct " +
+            "and pr.name_productions like :nameProductions ",nativeQuery = true)
+    Page<Products> findAllProduct(Pageable pageable, @Param("nameSearch") String nameSearch, @Param("typeProduct") String typeProduct, @Param("nameProductions") String nameProductions );
+
+
+    //HAI
     @Query(value = "select * from products", nativeQuery = true)
-    Page<Products> findAllProduct(Pageable pageable);
+    Page<Products> getAllProduct(Pageable pageable);
 
     @Query(value = "select * from products where products.id=:id", nativeQuery = true)
     Products getProductById(@Param("id") Integer id);

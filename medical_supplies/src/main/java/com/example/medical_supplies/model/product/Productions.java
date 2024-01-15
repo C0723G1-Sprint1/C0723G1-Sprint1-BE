@@ -26,10 +26,6 @@ public class Productions {
         this.products = products;
     }
 
-    public Productions(Integer productions) {
-
-    }
-
     public Integer getId() {
         return id;
     }

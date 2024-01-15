@@ -13,6 +13,12 @@ public class ProductionsService implements IProductions{
     @Autowired
     private IProductionsRepository iProductionsRepository;
 
+    /**
+     * Author: AnHN.
+     * This is the method to get the productions list and search by name
+     * return ResponseEntity and product or null
+     */
+
     @Override
     public List<Productions> findAllProductions() {
         return iProductionsRepository.findAllProductions();
