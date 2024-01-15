@@ -8,6 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductionsService implements IProductions{
+public class ProductionsServiceService implements IProductionsService {
 
+    @Autowired
+    private IProductionsRepository iProductionsRepository;
+
+    @Override
+    public List<Productions> findAllProductions() {
+        return iProductionsRepository.findAllProductions();
+    }
 }

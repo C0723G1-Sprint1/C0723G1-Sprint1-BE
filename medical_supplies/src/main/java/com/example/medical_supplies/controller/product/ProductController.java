@@ -17,7 +17,7 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("api/products")
+@RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired
@@ -28,10 +28,9 @@ public class ProductController {
             @RequestParam(name = "nameProduct", defaultValue = "", required = false) String name,
             @RequestParam(name = "typeProduct", defaultValue = "", required = false) String type,
             @RequestParam(name = "productions", defaultValue = "", required = false) String productions,
-            @RequestParam(defaultValue = "0", required = false) int page
-    ) {
-        Pageable pageable = PageRequest.of(page, 5);
-        Page<Products> productPage = iProductService.findAllProduct(pageable);
+            @RequestParam(name = "page", defaultValue = "0", required = false) int page) {
+        Pageable pageable = PageRequest.of(page, 9);
+        Page<Products> productPage = iProductService.findAllProduct(pageable,name,type,productions);
         if (productPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

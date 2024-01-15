@@ -4,10 +4,11 @@ import com.example.medical_supplies.model.product.Products;
 import com.example.medical_supplies.model.product.TypeProduct;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface IProductService {
 
-    Page<Products> findAllProduct(Pageable pageable);
+    Page<Products> findAllProduct(Pageable pageable, String nameSearch,String typeProduct ,String nameProductions );
 }

@@ -7,6 +7,7 @@ import com.example.medical_supplies.repository.product.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,8 @@ public class ProductService implements IProductService{
 
 
     @Override
-    public Page<Products> findAllProduct(Pageable pageable) {
-        return iProductRepository.findAllProduct(pageable);
+    public Page<Products> findAllProduct(Pageable pageable, String nameSearch,  String typeProduct, String nameProductions ) {
+        return iProductRepository.findAllProduct(pageable, "%"+nameSearch+"%","%"+typeProduct+"%","%"+nameProductions+"%");
     }
+
 }

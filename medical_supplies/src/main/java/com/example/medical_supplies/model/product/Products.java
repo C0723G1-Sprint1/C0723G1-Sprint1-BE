@@ -2,41 +2,42 @@ package com.example.medical_supplies.model.product;
 
 import jakarta.persistence.*;
 
+
 @Entity
 public class Products {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-        private String name;
+    private String name;
 
-        private Double price;
+    private Double price;
 
-        private Integer quantity;
+    private Integer quantity;
 
-        private String supplier;
+    private String supplier;
 
-        private String ingredient;
+    private String ingredient;
 
-        private String mainAvatar;
+    private String mainAvatar;
 
-        private String avatarOne;
+    private String avatarOne;
 
-        private String avatarTwo;
-
-
-        @ManyToOne
-        @JoinColumn(name = "id_type_product", referencedColumnName = "id")
-        private TypeProduct typeProduct;
-
-        @ManyToOne
-        @JoinColumn(name = "id_production", referencedColumnName = "id")
-        private Productions productions;
+    private String avatarTwo;
 
 
-        public Products() {
-        }
+    @ManyToOne
+    @JoinColumn(name = "id_type_product", referencedColumnName = "id")
+    private TypeProduct typeProduct;
+
+    @ManyToOne
+    @JoinColumn(name = "id_production", referencedColumnName = "id")
+    private Productions productions;
+
+
+    public Products() {
+    }
 
     public Products(Integer id, String name, Double price, Integer quantity, String supplier, String ingredient, String mainAvatar, String avatarOne, String avatarTwo, TypeProduct typeProduct, Productions productions) {
         this.id = id;
@@ -104,24 +105,24 @@ public class Products {
         return mainAvatar;
     }
 
-    public void setMainAvatar(String mainAvatar) {
-        this.mainAvatar = mainAvatar;
+    public void setMainAvatar(String main_avatar) {
+        this.mainAvatar = main_avatar;
     }
 
     public String getAvatarOne() {
         return avatarOne;
     }
 
-    public void setAvatarOne(String avatarOne) {
-        this.avatarOne = avatarOne;
+    public void setAvatarOne(String avatar_one) {
+        this.avatarOne = avatar_one;
     }
 
     public String getAvatarTwo() {
         return avatarTwo;
     }
 
-    public void setAvatarTwo(String avatarTwo) {
-        this.avatarTwo = avatarTwo;
+    public void setAvatarTwo(String avatar_two) {
+        this.avatarTwo = avatar_two;
     }
 
     public TypeProduct getTypeProduct() {

@@ -7,5 +7,6 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class TypeProductController {
-
+    @Autowired
+    private ITypeProductService iTypeProductService;
 }
