@@ -16,13 +16,15 @@ import org.springframework.validation.Validator;
 public class LoginDTO implements Validator  {
 
     @NotBlank(message = "Email không được để trống.")
-    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$",message = "Email sai định dạng.")
-    @Size(max = 40,message = "Email phải ít hơn hoặc bằng 40 ký tự")
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$",message = "Email sai định dạng.")
+    @Size(min = 15,message = "Mật khẩu phải từ 15 kí tự")
+    @Size(max = 40,message = "Email phải ít hơn hoặc bằng 45 ký tự")
     private String email;
 
-//    @NotBlank(message = "Mật khẩu không được để trống.")
-//    @Size(min = 8,message = "Mật khẩu phải từ 8 kí tự")
-//    @Size(max = 20,message = "Mật khẩu phải ít hơn hoặc bằng 20 ký tự")
+    @NotBlank(message = "Mật khẩu không được để trống.")
+    @Pattern(regexp = "^\\w+$",message = "Mật khẩu không chứa ký tự đặc biệt.")
+    @Size(min = 8,message = "Mật khẩu phải từ 8 kí tự")
+    @Size(max = 20,message = "Mật khẩu phải ít hơn hoặc bằng 20 ký tự")
     private String password;
 
     public String getEmail() {

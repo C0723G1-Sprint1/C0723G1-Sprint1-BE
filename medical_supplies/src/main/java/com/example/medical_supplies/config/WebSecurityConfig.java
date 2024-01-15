@@ -99,8 +99,18 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
 //                        Trang không cần đăng nhập
-                                .requestMatchers("/api/news/**","/api/category").permitAll()
+//                                .requestMatchers("/api/news/**","/api/category").permitAll()
+//                                .requestMatchers("/api/login").permitAll()
+//                                .requestMatchers("/api/employee/**").permitAll()
                                 .requestMatchers("/api/login").permitAll()
+                                .requestMatchers("/api/employee/**","/api/employee/edit/**").permitAll()
+                                .requestMatchers("/api/changePassword").permitAll()
+                                .requestMatchers("/api/changePassword/**").permitAll()
+//                                .requestMatchers("/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
+//                                .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
+                                .requestMatchers("/api/**").permitAll()
+//                                .requestMatchers("/api/recoverPassword").permitAll()
+//                                .requestMatchers("/api/sendMail", "/api/customerType","/api/resetPassword/**").permitAll()
                                 .requestMatchers("/api/employee/**","/api/products/**","/api/productions/**","/api/type_products/**").permitAll()
                                 .requestMatchers("/api/product/size", "/api/product/promotion", "/api/product/category").permitAll()
                                 .requestMatchers("/api/invoices/**", "/api/invoice-details/**").permitAll()
@@ -109,7 +119,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/sendMail", "/api/customerType","/api/resetPassword/**").permitAll()
 //                        Trang cần có quyền hợp lệ
 
-                                .requestMatchers("/api/notification/view", "/api/customer/**", "/api/customerType","/api/overview/**").hasAnyRole("ADMIN", "ACCOUNTANT", "SALESMAN")
+//                                .requestMatchers("/api/**","/api/notification/view", "/api/customer/**", "/api/customerType","/api/overview/**").hasAnyRole("ADMIN", "ACCOUNTANT", "SALESMAN")
 //                                .requestMatchers("/api/notification/add/**","/api/sales-report/**").hasRole("MANAGER")
 //                                .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
 //                                .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
@@ -122,7 +132,7 @@ public class WebSecurityConfig {
 //                                .requestMatchers("/api/employee/**").authenticated()
 //                                .requestMatchers("/api/changePassword").authenticated()
 //                                .requestMatchers("/api/customer/**").authenticated()
-//                                .anyRequest().authenticated()
+                                .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)

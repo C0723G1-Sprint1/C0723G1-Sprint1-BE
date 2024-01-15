@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +23,7 @@ public class Employee {
     private String phone;
     @Column(nullable = false)
     private String address;
+    @Column(columnDefinition = "true")
     private Boolean gender;
     private String avatar;
     @OneToOne
