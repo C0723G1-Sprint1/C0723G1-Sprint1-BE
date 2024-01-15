@@ -26,6 +26,11 @@ public class AccountService implements IAccountService {
         return accountRepository.findByEmail(email);
     }
 
+    @Override
+    public void updatePassword(Account account) {
+        accountRepository.updatePasswordAccount(account.getEmail(),account.getPassword());
+    }
+
 
     @Override
     public Account addAccount(Account account) {

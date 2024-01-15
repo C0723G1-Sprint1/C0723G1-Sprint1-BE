@@ -1,11 +1,13 @@
 package com.example.medical_supplies.repository.auth;
 
 import com.example.medical_supplies.model.auth.Account;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.Optional;
 
@@ -38,4 +40,15 @@ public interface IAccountRepository extends JpaRepository<Account,Long> {
     @Query(value = "INSERT INTO account_role (id_account,id_role) " +
             "VALUES ( :idAccount, :idRole ) ", nativeQuery = true)
     void addAccountRole(@Param("idAccount") int idAccount,@Param("idRole") int idRole);
+
+    /**
+     * Update account password
+     * @author: TrungND
+     * @date: 11/01/2024
+     * @param email The email of the account, password the password of account.
+     */
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE accounts SET password = :password WHERE email =:email",nativeQuery = true)
+    void updatePasswordAccount(@Param("email") String email,@Param("password") String password);
 }

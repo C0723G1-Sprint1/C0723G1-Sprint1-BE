@@ -37,4 +37,6 @@ public interface IEmployeeService {
      */
     void addEmployee(Employee employee);
 
+
+    void save(Employee employee);
 }
