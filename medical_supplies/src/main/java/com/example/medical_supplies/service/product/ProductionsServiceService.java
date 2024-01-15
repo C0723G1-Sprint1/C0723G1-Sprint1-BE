@@ -13,6 +13,13 @@ public class ProductionsServiceService implements IProductionsService {
     @Autowired
     private IProductionsRepository iProductionsRepository;
 
+    /**
+     * Get list TypeProduct
+     * @author: AnHN
+     * @date: 10-01-2024
+     * @return List<TypeProduct>
+     */
+
     @Override
     public List<Productions> findAllProductions() {
         return iProductionsRepository.findAllProductions();

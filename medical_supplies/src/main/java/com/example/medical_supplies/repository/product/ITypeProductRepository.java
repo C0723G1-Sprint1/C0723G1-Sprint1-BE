@@ -8,6 +8,14 @@ import java.util.List;
 
 public interface ITypeProductRepository extends JpaRepository<TypeProduct,Integer> {
 
+
+    /**
+     * Get list TypeProduct
+     * @author: AnHN
+     * @date: 10-01-2024
+     * @return List<TypeProduct>
+     */
+
     @Query(value = "select * from type_product",nativeQuery = true)
     List<TypeProduct> findAllTypeProduct();
 }

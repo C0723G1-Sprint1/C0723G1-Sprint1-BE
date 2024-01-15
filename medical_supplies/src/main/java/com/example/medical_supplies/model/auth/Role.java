@@ -10,16 +10,17 @@ import lombok.NoArgsConstructor;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "id")
+    private Integer idRole;
     @Column(nullable = false)
     private String role;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdRole() {
+        return idRole;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdRole(Integer idRole) {
+        this.idRole = idRole;
     }
 
     public String getRole() {
