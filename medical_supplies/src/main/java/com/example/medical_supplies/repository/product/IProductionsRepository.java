@@ -8,7 +8,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 
-public interface IProductionsRepository extends JpaRepository<Productions,Long> {
+public interface IProductionsRepository extends JpaRepository<Productions,Integer> {
+
+    /**
+     * Author: AnHN.
+     * This is the method to get the productions list and search by name
+     * return ResponseEntity and product or null
+     */
     @Query(value = "select * from productions",nativeQuery = true)
     List<Productions> findAllProductions();
 }

@@ -26,10 +26,6 @@ public class TypeProduct {
         this.products = products;
     }
 
-    public TypeProduct(Integer typeProduct) {
-
-    }
-
     public Integer getId() {
         return id;
     }

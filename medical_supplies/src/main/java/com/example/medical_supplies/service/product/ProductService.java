@@ -18,10 +18,15 @@ public class ProductService implements IProductService {
     @Autowired
     private IProductRepository iProductRepository;
 
+    /**
+     * Author: AnHN.
+     * This is the method to get the product list and search by name
+     * return ResponseEntity and product or null
+     */
 
     @Override
-    public Page<Products> findAllProduct(Pageable pageable) {
-        return iProductRepository.findAllProduct(pageable);
+    public Page<Products> findAllProduct(Pageable pageable, String nameSearch,  String typeProduct, String nameProductions ) {
+        return iProductRepository.findAllProduct(pageable, "%"+nameSearch+"%","%"+typeProduct+"%","%"+nameProductions+"%");
     }
 
     @Override
