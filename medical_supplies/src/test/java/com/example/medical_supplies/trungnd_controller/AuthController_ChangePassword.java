@@ -301,9 +301,9 @@ public class AuthController_ChangePassword {
     @Test
     public void changePassword_24() throws Exception {
         ChangePasswordDTO changePasswordDTO = new ChangePasswordDTO();
-        changePasswordDTO.setPassword("Ann321@");
-        changePasswordDTO.setNewPassword("Ann123@");
-        changePasswordDTO.setAgainNewPassword("Ann123@");
+        changePasswordDTO.setPassword("Ann123@");
+        changePasswordDTO.setNewPassword("Annn123@");
+        changePasswordDTO.setAgainNewPassword("Annn123@");
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .patch("/api/changePassword")
