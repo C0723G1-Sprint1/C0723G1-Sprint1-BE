@@ -14,6 +14,11 @@ public class TypeProductService implements ITypeProductService{
     @Autowired
     private ITypeProductRepository iTypeProductRepository;
 
+    /**
+     * Author: AnHN.
+     * This is the method to get the typeProduct list and search by name
+     * return ResponseEntity and product or null
+     */
     @Override
     public List<TypeProduct> findAllTypeProduct() {
         return iTypeProductRepository.findAllTypeProduct();

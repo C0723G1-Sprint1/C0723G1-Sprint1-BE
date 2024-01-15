@@ -6,8 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ITypeProductRepository extends JpaRepository<TypeProduct,Long> {
+public interface ITypeProductRepository extends JpaRepository<TypeProduct,Integer> {
 
+    /**
+     * Author: AnHN.
+     * This is the method to get the typeProduct list and search by name
+     * return ResponseEntity and product or null
+     */
     @Query(value = "select * from type_product",nativeQuery = true)
     List<TypeProduct> findAllTypeProduct();
 }

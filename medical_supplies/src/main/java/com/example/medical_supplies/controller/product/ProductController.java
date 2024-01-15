@@ -18,6 +18,12 @@ public class ProductController {
     @Autowired
     private IProductService iProductService;
 
+
+    /**
+     * Author: AnHN.
+     * This is the method to get the product list and search by name
+     * return ResponseEntity and product or null
+     */
     @GetMapping("/list")
     public ResponseEntity<?> getAllProduct(
             @RequestParam(name = "nameProduct", defaultValue = "", required = false) String name,
@@ -25,8 +31,8 @@ public class ProductController {
             @RequestParam(name = "productions", defaultValue = "", required = false) String productions,
             @RequestParam(defaultValue = "0", required = false) int page
     ) {
-        Pageable pageable = PageRequest.of(page, 5);
-        Page<Products> productPage = iProductService.findAllProduct(pageable);
+        Pageable pageable = PageRequest.of(page, 9);
+        Page<Products> productPage = iProductService.findAllProduct(pageable,name,type,productions);
         if (productPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

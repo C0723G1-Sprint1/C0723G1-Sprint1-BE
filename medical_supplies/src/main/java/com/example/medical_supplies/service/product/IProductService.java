@@ -6,5 +6,10 @@ import org.springframework.data.domain.Pageable;
 
 public interface IProductService {
 
-    Page<Products> findAllProduct(Pageable pageable);
+    /**
+     * Author: AnHN.
+     * This is the method to get the product list and search by name
+     * return ResponseEntity and product or null
+     */
+    Page<Products> findAllProduct(Pageable pageable, String nameSearch,String typeProduct ,String nameProductions );
 }
