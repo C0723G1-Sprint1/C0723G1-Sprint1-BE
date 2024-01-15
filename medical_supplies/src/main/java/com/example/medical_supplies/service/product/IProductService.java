@@ -9,7 +9,7 @@ public interface IProductService {
 
     Page<Products> findAllProduct(Pageable pageable);
 
-    Products getProductById(Long id);
+    Products getProductById(Integer id);
 
     boolean createProduct(ProductDTO productDTO);
 

@@ -25,7 +25,7 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Products getProductById(Long id) {
+    public Products getProductById(Integer id) {
         return iProductRepository.getProductById(id);
     }
 

@@ -47,7 +47,7 @@ public class ProductRestController_editProduct {
         productDTO.setIngredient("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setProductions(1);
         productDTO.setTypeProduct(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -76,7 +76,7 @@ public class ProductRestController_editProduct {
         productDTO.setIngredient("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setProductions(1);
         productDTO.setTypeProduct(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -105,7 +105,7 @@ public class ProductRestController_editProduct {
         productDTO.setIngredient("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setProductions(1);
         productDTO.setTypeProduct(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -134,7 +134,7 @@ public class ProductRestController_editProduct {
         productDTO.setIngredient("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setProductions(1);
         productDTO.setTypeProduct(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -163,7 +163,7 @@ public class ProductRestController_editProduct {
         productDTO.setIngredient("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setProductions(1);
         productDTO.setTypeProduct(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -191,7 +191,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -219,7 +219,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/create/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -247,7 +247,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/create/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -275,7 +275,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/create/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -303,7 +303,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/create/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -331,7 +331,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1l);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -359,7 +359,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -387,7 +387,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -415,7 +415,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -443,7 +443,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -471,7 +471,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -499,7 +499,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -527,7 +527,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -555,7 +555,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -583,7 +583,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(null);
         productDTO.setProductions(1);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -611,7 +611,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("dsvdfsvvrvvklwjvlwjvs");
         productDTO.setTypeProduct(1);
         productDTO.setProductions(null);
-        productDTO.setId(1L);
+        productDTO.setId(1);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))
@@ -641,7 +641,7 @@ public class ProductRestController_editProduct {
         productDTO.setAvatarTwo("Ddddd");
         productDTO.setTypeProduct(3);
         productDTO.setProductions(2);
-        productDTO.setId(2L);
+        productDTO.setId(2);
         this.mockMvc.perform(
                         MockMvcRequestBuilders.patch("/api/products/update/product")
                                 .content(this.objectMapper.writeValueAsString(productDTO))

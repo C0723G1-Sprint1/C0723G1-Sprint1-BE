@@ -9,23 +9,17 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface IProductRepository extends JpaRepository<Products, Long> {
 
     @Query(value = "select * from products", nativeQuery = true)
     Page<Products> findAllProduct(Pageable pageable);
 
     @Query(value = "select * from products where products.id=:id", nativeQuery = true)
-    Products getProductById(@Param("id") Long id);
+    Products getProductById(@Param("id") Integer id);
 
-
-//    @Transactional
-//    @Modifying
-//    @Query(value = "INSERT INTO products(name, price, supplier, quantity, avatar_one, avatar_two, main_avatar, ingredient, id_production, id_type_product)" +
-//            " VALUES (:#{#products.name}, :#{#products.price}, :#{#products.supplier}, :#{#products.quantity}," +
-//            " :#{#products.avatarOne}, :#{#products.avatarTwo}, :#{#products.mainAvatar}, :#{#products.ingredient}," +
-//            " :#{#products.productions}, :#{#products.typeProduct})", nativeQuery = true)
-//    boolean createProduct(@Param("products") Products products);
 
     @Transactional
     @Modifying

@@ -36,7 +36,7 @@ public class ProductController {
     }
 
 
-    @PostMapping("/create/product")
+    @PostMapping("/create")
     public ResponseEntity<Void> addProduct(@RequestBody ProductDTO productDTO, BindingResult bindingResult){
         new ProductDTO().validate(productDTO,bindingResult);
         if (bindingResult.hasErrors()){
@@ -50,7 +50,7 @@ public class ProductController {
     }
 
 
-    @PatchMapping("/update/product")
+    @PatchMapping("/update")
     public ResponseEntity<?> updateProduct(@RequestBody ProductDTO productDTO, BindingResult bindingResult){
         new ProductDTO().validate(productDTO,bindingResult);
         if (bindingResult.hasErrors()){
@@ -61,5 +61,14 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/details/{id}")
+    public ResponseEntity<?> detailsProduct(@PathVariable Integer id){
+        Products products = iProductService.getProductById(id);
+        if (products == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(products,HttpStatus.OK);
     }
 }

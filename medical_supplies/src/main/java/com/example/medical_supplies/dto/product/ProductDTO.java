@@ -11,7 +11,7 @@ import org.springframework.validation.Validator;
 
 public class ProductDTO implements Validator {
 
-    private Long id;
+    private Integer id;
     @NotNull
     private String name;
     @NotBlank
@@ -35,11 +35,11 @@ public class ProductDTO implements Validator {
     @NotBlank
     private Integer productions;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
