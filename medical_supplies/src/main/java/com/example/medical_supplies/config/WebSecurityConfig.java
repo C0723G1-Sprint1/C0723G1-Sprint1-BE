@@ -109,7 +109,7 @@ public class WebSecurityConfig {
 //                                .requestMatchers("/api/sendMail", "/api/customerType","/api/resetPassword/**").permitAll()
 //                        Trang cần có quyền hợp lệ
 
-                                .requestMatchers("/api/**","/api/notification/view", "/api/customer/**", "/api/customerType","/api/overview/**").hasAnyRole("ADMIN", "ACCOUNTANT", "SALESMAN")
+                                .requestMatchers("/api/notification/view", "/api/customer/**", "/api/customerType","/api/overview/**").hasAnyRole("ADMIN", "ACCOUNTANT", "SALESMAN")
 //                                .requestMatchers("/api/notification/add/**","/api/sales-report/**").hasRole("MANAGER")
 //                                .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
 //                                .requestMatchers("/api/product/create").hasRole("WAREHOUSE")

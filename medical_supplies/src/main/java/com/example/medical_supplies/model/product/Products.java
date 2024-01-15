@@ -8,7 +8,7 @@ public class Products {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String name;
 
@@ -39,7 +39,7 @@ public class Products {
     public Products() {
     }
 
-    public Products(Long id, String name, Double price, Integer quantity, String supplier, String ingredient, String mainAvatar, String avatarOne, String avatarTwo, TypeProduct typeProduct, Productions productions) {
+    public Products(Integer id, String name, Double price, Integer quantity, String supplier, String ingredient, String mainAvatar, String avatarOne, String avatarTwo, TypeProduct typeProduct, Productions productions) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -53,11 +53,11 @@ public class Products {
         this.productions = productions;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
