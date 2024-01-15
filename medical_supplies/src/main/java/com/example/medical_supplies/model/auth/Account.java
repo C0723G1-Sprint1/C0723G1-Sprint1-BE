@@ -23,7 +23,7 @@ public class Account {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles",
+    @JoinTable(name = "account_role",
             joinColumns = @JoinColumn(name = "id_account", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_role", nullable = false))
     private Set<Role> roles = new HashSet<>();

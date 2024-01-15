@@ -48,9 +48,24 @@ public class EmployeeService implements IEmployeeService {
     public void editEmployeeRepo(Employee employee) {
         employeeRepository.editEmployeeRepo(employee);
     }
-
+    /**
+     * update an info Employee.
+     * @author: NamND
+     * @date: 11-01-2024
+     * @param employee
+     * @return emploue if adding new employee successfully,otherwise null
+     */
+    @Override
+    public void addEmployee(Employee employee) {
+        try {
+           employeeRepository.addEmployeeRepo(employee);
+        }catch (Exception e){
+            e.getMessage();
+        }
+    }
     @Override
     public void save(Employee employee) {
         employeeRepository.save(employee);
     }
+
 }
