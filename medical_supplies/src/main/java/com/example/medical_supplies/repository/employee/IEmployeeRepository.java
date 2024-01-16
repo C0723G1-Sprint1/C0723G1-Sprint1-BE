@@ -39,4 +39,6 @@ public interface IEmployeeRepository extends JpaRepository <Employee,Integer> {
             "values (:#{#employee.code},:#{#employee.name},:#{#employee.birthday}, :#{#employee.phone},:#{#employee.address}," +
             ":#{#employee.gender},:#{#employee.account.id})",nativeQuery = true)
     void addEmployeeRepo(@Param("employee") Employee employee);
+
+
 }
