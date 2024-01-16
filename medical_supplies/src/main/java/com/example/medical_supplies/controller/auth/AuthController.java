@@ -36,6 +36,7 @@ import java.util.stream.Collectors;
 
 @RequestMapping("/api")
 @RestController
+@CrossOrigin("*")
 public class AuthController {
     @Autowired
     private MyUserDetailService myUserDetailService;
