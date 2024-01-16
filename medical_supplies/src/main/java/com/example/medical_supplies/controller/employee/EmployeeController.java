@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RequestMapping("/api/employee")
-@CrossOrigin("**")
+@CrossOrigin("*")
 @RestController
 public class EmployeeController {
     @Autowired
@@ -29,7 +29,7 @@ public class EmployeeController {
      * param :id
      * return ResponseEntity and employee or null
      */
-    @PatchMapping("/edit/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<?> updateEmployee(@Valid @RequestBody EmployeeDTO employeeDTO, @PathVariable Integer id, BindingResult bindingResult) {
         Employee employee = employeeService.findEmployeeById(id);
         if (employee == null) {
