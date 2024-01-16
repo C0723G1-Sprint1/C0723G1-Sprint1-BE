@@ -103,6 +103,8 @@ public class WebSecurityConfig {
 //                                .requestMatchers("/api/login").permitAll()
 //                                .requestMatchers("/api/employee/**").permitAll()
                                 .requestMatchers("/api/login").permitAll()
+                                .requestMatchers("/api/register").permitAll()
+                                .requestMatchers("/api/role/**").permitAll()
                                 .requestMatchers("/api/employee/**","/api/employee/edit/**").permitAll()
                                 .requestMatchers("/api/changePassword").permitAll()
                                 .requestMatchers("/api/changePassword/**").permitAll()
