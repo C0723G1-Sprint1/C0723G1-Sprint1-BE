@@ -91,10 +91,10 @@ public class AuthController {
             jwtResponse.setAccessToken(jwt);
 
 //             Lấy ra name Role trả về
-            List<String> roles = myUserDetail.getAuthorities().stream()
-                    .map(item -> item.getAuthority())
-                    .collect(Collectors.toList());
-            jwtResponse.setRoles(roles);
+//            List<String> roles = myUserDetail.getAuthorities().stream()
+//                    .map(item -> item.getAuthority())
+//                    .collect(Collectors.toList());
+//            jwtResponse.setRoles(roles);
             return new ResponseEntity<>(jwtResponse, HttpStatus.OK);
         } catch (UsernameNotFoundException e) {
             return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);

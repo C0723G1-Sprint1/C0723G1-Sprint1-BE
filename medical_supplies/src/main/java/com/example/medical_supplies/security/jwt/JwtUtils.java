@@ -56,16 +56,16 @@ public class JwtUtils {
      */
     public String generateTokenFromEmail(String email) {
 //        Chuyển đổi role thành chuỗi token
-//        MyUserDetail myUserDetail = (MyUserDetail) myUserDetailService.loadUserByUsername(email);
-//        Map<String,Object> claims = new HashMap<>();
-//        claims.put("roles", myUserDetail.getAuthorities());
+        MyUserDetail myUserDetail = (MyUserDetail) myUserDetailService.loadUserByUsername(email);
+        Map<String,Object> claims = new HashMap<>();
+        claims.put("roles", myUserDetail.getAuthorities());
 
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + EXPIRE_TIME))
                 .signWith(key(), SignatureAlgorithm.HS256)
-//                .addClaims(claims)
+                .addClaims(claims)
                 .compact();
     }
 
