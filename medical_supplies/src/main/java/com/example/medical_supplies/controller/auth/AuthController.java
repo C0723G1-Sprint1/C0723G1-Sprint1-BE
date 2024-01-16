@@ -91,10 +91,10 @@ public class AuthController {
             jwtResponse.setAccessToken(jwt);
 
 //             Lấy ra name Role trả về
-            List<String> roles = myUserDetail.getAuthorities().stream()
-                    .map(item -> item.getAuthority())
-                    .collect(Collectors.toList());
-            jwtResponse.setRoles(roles);
+//            List<String> roles = myUserDetail.getAuthorities().stream()
+//                    .map(item -> item.getAuthority())
+//                    .collect(Collectors.toList());
+//            jwtResponse.setRoles(roles);
             return new ResponseEntity<>(jwtResponse, HttpStatus.OK);
         } catch (UsernameNotFoundException e) {
             return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);
@@ -146,17 +146,17 @@ public class AuthController {
      */
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody AccountDTO accountDTO, BindingResult bindingResult) {
-        Map<String, String> accountDtoMap = new HashMap<>();
+        Map<String, String> errors = new HashMap<>();
         new AccountDTO().validate(accountDTO, bindingResult);
         if (accountService.findByEmail(accountDTO.getEmail()).isPresent()) {
-            accountDtoMap.put("email", "Email đã tồn tại");
+            errors.put("email", "Email đã tồn tại");
         }
         if (bindingResult.hasErrors()) {
             for (FieldError err : bindingResult.getFieldErrors()) {
-                accountDtoMap.put(err.getField(), err.getDefaultMessage());
+                errors.put(err.getField(), err.getDefaultMessage());
             }
         }
-        if (accountDtoMap.size() == 0) {
+        if (errors.size() == 0) {
 
             Account account = new Account();
             BeanUtils.copyProperties(accountDTO, account);
@@ -179,7 +179,7 @@ public class AuthController {
             employeeService.addEmployee(employee);
             return new ResponseEntity<>("Thêm tài khoản thành công", HttpStatus.OK);
         }
-        return new ResponseEntity<>(accountDtoMap, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
 }

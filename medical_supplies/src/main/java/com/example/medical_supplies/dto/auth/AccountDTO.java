@@ -38,7 +38,7 @@ public class AccountDTO implements Validator {
     @NotBlank(message = "Địa chỉ không được để trống.")
     private String address;
     private Boolean gender;
-    @NotNull(message = "sdfsdfsd")
+    @NotNull(message = "")
     private Integer idRole;
 
     public String getEmail() {

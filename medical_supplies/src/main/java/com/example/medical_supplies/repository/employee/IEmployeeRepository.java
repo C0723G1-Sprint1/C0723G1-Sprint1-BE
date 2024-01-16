@@ -35,7 +35,7 @@ public interface IEmployeeRepository extends JpaRepository <Employee,Integer> {
      */
     @Transactional
     @Modifying
-    @Query(value = "insert into employees (`code`,`name`,birthday,phone,address,gender,id_account) " +
+    @Query(value = "insert into employee (`code`,`name`,birthday,phone,address,gender,id_account) " +
             "values (:#{#employee.code},:#{#employee.name},:#{#employee.birthday}, :#{#employee.phone},:#{#employee.address}," +
             ":#{#employee.gender},:#{#employee.account.id})",nativeQuery = true)
     void addEmployeeRepo(@Param("employee") Employee employee);

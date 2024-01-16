@@ -8,6 +8,11 @@ import java.util.List;
 
 public interface ITypeProductRepository extends JpaRepository<TypeProduct,Long> {
 
+    /**
+     * Author: HaiDT.
+     * This is the method to get the typeProduct list and search by name
+     * return ResponseEntity and product or null
+     */
     @Query(value = "select * from type_product",nativeQuery = true)
     List<TypeProduct> findAllTypeProduct();
 }
