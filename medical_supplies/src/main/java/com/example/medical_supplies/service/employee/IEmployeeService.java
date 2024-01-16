@@ -37,6 +37,8 @@ public interface IEmployeeService {
      */
     void addEmployee(Employee employee);
 
+
     void save(Employee employee);
 
+    Employee findEmployeeByEmail(String email);
 }
