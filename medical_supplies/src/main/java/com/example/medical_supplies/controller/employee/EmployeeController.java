@@ -76,4 +76,14 @@ public class EmployeeController {
         }
     }
 
+    @GetMapping("/search/{email}")
+    public ResponseEntity<?> getEmployeeByEmail(@PathVariable String email) {
+        Employee employee = employeeService.findEmployeeByEmail(email);
+        if (employee == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(employee, HttpStatus.OK);
+        }
+    }
+
 }
