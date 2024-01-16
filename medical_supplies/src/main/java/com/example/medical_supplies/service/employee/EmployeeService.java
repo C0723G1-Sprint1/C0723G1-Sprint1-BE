@@ -1,5 +1,6 @@
 package com.example.medical_supplies.service.employee;
 
+import com.example.medical_supplies.model.auth.Account;
 import com.example.medical_supplies.model.auth.Employee;
 import com.example.medical_supplies.repository.employee.IEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,17 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void save(Employee employee) {
         employeeRepository.save(employee);
+    }
+
+    @Override
+    public Employee findEmployeeByEmail(String email) {
+        try {
+           Integer idAccount= employeeRepository.findAccountByEmail(email);
+           return employeeRepository.findEmployeeByAccountId(idAccount);
+
+        }catch (Exception e){
+           return null;
+        }
     }
 
 }
