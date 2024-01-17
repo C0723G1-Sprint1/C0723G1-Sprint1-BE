@@ -2,37 +2,38 @@ package com.example.medical_supplies.dto.product;
 
 import com.example.medical_supplies.model.product.Productions;
 import com.example.medical_supplies.model.product.TypeProduct;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 public class ProductDTO implements Validator {
-
+    private static final String REGEX_NAME = "^[A-Z]\\w*\\s?(\\w*\\s?){1,50}$";
     private Integer id;
-    @NotNull
+    @NotBlank(message = "Tên vật tư không được để trông,khoảng trắng hoặc null")
+    @Pattern(regexp = REGEX_NAME,message = "Tên nhà cung không đúng định dạng hoặc chứa kí tự đặc biệt")
+    @Min(value = 3,message = "Tên nhà cung cấp phải dài hơn 3 ký tự")
+    @Max(value = 100,message = "Tên nhà cung quá dài, không được quá 100 kí tự")
     private String name;
-    @NotBlank
-    @Min(value = 1000, message = "")
+    @NotBlank(message = "Giá vật tư không được để trống,khoảng trắng ")
+    @Min(value = 1000, message = "Giá vật tư phải lớn hơn 1000 VNĐ")
     private Double price;
-    @NotBlank
-    @Min(value = 1, message = "")
+    @NotBlank(message = "Số lượng vật tư không được để trống,khoảng trắng")
+    @Min(value = 1, message = "Số lượng phải lớn hơn 0")
     private Integer quantity;
-    @NotBlank
+    @NotBlank(message = "Tên nhà cung cấp vật tư không được để trống,khoảng trắng ")
+    @Pattern(regexp = REGEX_NAME,message = "Tên nhà cung không đúng định dạng hoặc chứa kí tự đặc biệt")
     private String supplier;
-    @NotBlank
+    @NotBlank(message = "Thành phần vật tư không được để trống,khoảng trắng ")
     private String ingredient;
-    @NotBlank
+    @NotBlank(message = "Ảnh vật tư không được để trống,khoảng trắng ")
     private String mainAvatar;
-    @NotBlank
+
     private String avatarOne;
-    @NotBlank
+
     private String avatarTwo;
-    @NotBlank
+    @NotBlank(message = "Tên loại tư không được để trống,khoảng trắng ")
     private Integer typeProduct;
-    @NotBlank
+    @NotBlank(message = "Tên nhà sản xuất vật tư không được để trống,khoảng trắng ")
     private Integer productions;
 
     public Integer getId() {
@@ -123,7 +124,7 @@ public class ProductDTO implements Validator {
         this.productions = productions;
     }
 
-    private static final String REGEX_NAME = "^[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+ [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+(?: [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*)*$";
+
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -132,55 +133,32 @@ public class ProductDTO implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        ProductDTO productDTO = (ProductDTO) target;
-        //check validate for Product_name
-        if (productDTO.getName() != null) {
-            if (productDTO.getName().equals("")) {
-                errors.rejectValue("name", "", "Vui lòng nhập");
-            } else if (productDTO.getName().length() <= 3) {
-                errors.rejectValue("name", "", "Không đủ độ dài");
-            } else if (productDTO.getName().length() > 100) {
-                errors.rejectValue("name", "", "Tên quá dài, không được quá 30 kí tự");
-            } else if (!productDTO.getName().matches(REGEX_NAME)) {
-                errors.rejectValue("name", "", "Không đúng định dạng hoặc chứa kí tự đặc biệt");
-            }
-        }else if(productDTO.getName() == null){
-            errors.rejectValue("name", "", "Vui lòng nhập");
-        }
-        //check validate for Product_price
-        if (productDTO.getPrice() == null) {
-            errors.rejectValue("price", "", "Vui lòng nhập");
-        }
-
-        // check validate for product_quantity
-        if (productDTO.getQuantity() == null) {
-            errors.rejectValue("quantity", "", "Vui lòng nhập");
-        }
-        // check validate for product_ingredient
-        if (productDTO.getIngredient() == null) {
-            errors.rejectValue("ingredient", "", "Vui lòng nhập");
-        } else if (productDTO.getIngredient().trim().equals("")) {
-            errors.rejectValue("ingredient", "", "Vui lòng nhập");
-        } else if (productDTO.getIngredient().length() <= 3) {
-            errors.rejectValue("ingredient", "", "Không đủ độ dài");
-        } else if (productDTO.getIngredient().length() > 100) {
-            errors.rejectValue("ingredient", "", "Tên thành phần quá dài, không được quá 100 kí tự");
-        } else if (productDTO.getIngredient().matches(REGEX_NAME)) {
-            errors.rejectValue("ingredient", "", "Không đúng định dạng hoặc chứa kí tự đặc biệt");
-        }
-
-        // check validate for product_supplier
-        if (productDTO.getSupplier() == null) {
-            errors.rejectValue("supplier", "", "Vui lòng nhập");
-        } else if (productDTO.getSupplier().trim().equals("")) {
-            errors.rejectValue("supplier", "", "Vui lòng nhập");
-        } else if (productDTO.getSupplier().length() < 3) {
-            errors.rejectValue("supplier", "", "Tên nhà cung cấp không đủ độ dài");
-        } else if (productDTO.getSupplier().length() > 100) {
-            errors.rejectValue("supplier", "", "Tên nhà cung cấp quá dài, không được quá 100 kí tự");
-        } else if (productDTO.getSupplier().matches(REGEX_NAME)) {
-            errors.rejectValue("supplier", "", "Không đúng định dạng hoặc chứa kí tự đặc biệt");
-        }
+//        ProductDTO productDTO = (ProductDTO) target;
+//        //check validate for Product_name
+//        if (productDTO.getName().length() <= 3) {
+//            errors.rejectValue("name", "", "Tên vật tư phải dài hơn 3 ký tự ");
+//        } else if (productDTO.getName().length() >= 100) {
+//            errors.rejectValue("name", "", "Tên quá dài, không được quá 100 kí tự");
+//        } else if (!productDTO.getName().matches(REGEX_NAME)) {
+//            errors.rejectValue("name", "", "Tên không đúng định dạng hoặc chứa kí tự đặc biệt");
+//        }
+//        // check validate for product_ingredient
+//          else if (productDTO.getIngredient().length() <= 3) {
+//            errors.rejectValue("ingredient", "", "Thành phần phải dài hơn 3 ký tự");
+//        } else if (productDTO.getIngredient().length() > 100) {
+//            errors.rejectValue("ingredient", "", "Tên thành phần quá dài, không được quá 100 kí tự");
+//        } else if (productDTO.getIngredient().matches(REGEX_NAME)) {
+//            errors.rejectValue("ingredient", "", "Tên thành không đúng định dạng hoặc chứa kí tự đặc biệt");
+//        }
+//
+//        // check validate for product_supplier
+//        else if (productDTO.getSupplier().length() < 3) {
+//            errors.rejectValue("supplier", "", "Tên nhà cung cấp phải dài hơn 3 ký tự");
+//        } else if (productDTO.getSupplier().length() > 100) {
+//            errors.rejectValue("supplier", "", "Tên nhà cung quá dài, không được quá 100 kí tự");
+//        } else if (productDTO.getSupplier().matches(REGEX_NAME)) {
+//            errors.rejectValue("supplier", "", "Tên nhà cung không đúng định dạng hoặc chứa kí tự đặc biệt");
+//        }
     }
 
 }
