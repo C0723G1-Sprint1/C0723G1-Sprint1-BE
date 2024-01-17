@@ -122,19 +122,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/api/sendMail", "/api/customerType","/api/resetPassword/**").permitAll()
 //                        Trang cần có quyền hợp lệ
 
-//                                .requestMatchers("/api/**","/api/notification/view", "/api/customer/**", "/api/customerType","/api/overview/**").hasAnyRole("ADMIN", "ACCOUNTANT", "SALESMAN")
-//                                .requestMatchers("/api/role","/api/register/**","/api/employee//edit/**","").hasRole("MANAGER")
-//                                .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
-//                                .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
-//                                .requestMatchers("/api/warehouses/**").hasRole("WAREHOUSE")
-//                                .requestMatchers("/api/size-detail/**").hasRole("WAREHOUSE")
-//                                .requestMatchers("/api/sales-report/**").hasRole("MANAGER")
-//                                .requestMatchers("/api/invoices/**", "/api/sales/**").hasRole("SALE")
-//                                .requestMatchers("/api/employee/**", "/api/product/list").authenticated()
-//                                .requestMatchers("/api/product/**").authenticated()
-//                                .requestMatchers("/api/employee/**").authenticated()
-//                                .requestMatchers("/api/changePassword").authenticated()
-//                                .requestMatchers("/api/customer/**").authenticated()
+//
                                 .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)

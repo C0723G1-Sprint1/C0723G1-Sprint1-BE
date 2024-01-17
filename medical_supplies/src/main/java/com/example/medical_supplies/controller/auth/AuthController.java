@@ -102,6 +102,7 @@ public class AuthController {
             return new ResponseEntity<>("Thông tin đăng nhập không chính xác.", HttpStatus.UNAUTHORIZED);
         }
     }
+
     /**
      * method changePassword
      * create by TrungND
@@ -112,7 +113,7 @@ public class AuthController {
     @PatchMapping("/changePassword")
     public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePasswordDTO changePasswordDTO, BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
-        if (changePasswordDTO.getNewPassword()==null || changePasswordDTO.getNewPassword().equals("")){
+        if (changePasswordDTO.getNewPassword() == null || changePasswordDTO.getNewPassword().equals("")) {
             errors.put("newPassword", "Mật khẩu mới không được trống hoặc null");
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }

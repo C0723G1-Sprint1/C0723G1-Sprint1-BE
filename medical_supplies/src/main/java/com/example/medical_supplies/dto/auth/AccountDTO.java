@@ -27,7 +27,6 @@ public class AccountDTO implements Validator {
     @Size(max = 20, message = "Mật khẩu phải ít hơn hoặc bằng 20 ký tự.")
     private String password;
     @NotBlank(message = "Tên nhân viên không được để trống.")
-    @Pattern(regexp = REGEX_NAME, message = "Tên không đúng định dạng.")
     @Size(max = 20, message = "Mật khẩu phải ít hơn hoặc bằng 50 ký tự.")
     private String name;
     @NotBlank(message = "Tên nhân viên không được để trống.")
@@ -38,7 +37,7 @@ public class AccountDTO implements Validator {
     @NotBlank(message = "Địa chỉ không được để trống.")
     private String address;
     private Boolean gender;
-    @NotNull(message = "Chức vụ không được để trống.")
+    @NotNull(message = "")
     private Integer idRole;
 
     public String getEmail() {
@@ -116,9 +115,12 @@ public class AccountDTO implements Validator {
         if (accountDTO.birthday != null) {
             if (!accountDTO.birthday.equals("")) {
                 if (!checkDob(accountDTO.getBirthday())) {
-                    errors.rejectValue("birthday", null, "Nhân viên phải đủ 18 tuổi");
+                    errors.rejectValue("birthday", null, "Nhân viên phải đủ 18 tuổi.");
                 }
             }
+        }
+        if (!accountDTO.name.matches(REGEX_NAME)){
+            errors.rejectValue("name", null, "Tên không đúng định dạng.");
         }
 
     }
