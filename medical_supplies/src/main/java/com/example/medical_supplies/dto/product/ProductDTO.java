@@ -133,32 +133,6 @@ public class ProductDTO implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-//        ProductDTO productDTO = (ProductDTO) target;
-//        //check validate for Product_name
-//        if (productDTO.getName().length() <= 3) {
-//            errors.rejectValue("name", "", "Tên vật tư phải dài hơn 3 ký tự ");
-//        } else if (productDTO.getName().length() >= 100) {
-//            errors.rejectValue("name", "", "Tên quá dài, không được quá 100 kí tự");
-//        } else if (!productDTO.getName().matches(REGEX_NAME)) {
-//            errors.rejectValue("name", "", "Tên không đúng định dạng hoặc chứa kí tự đặc biệt");
-//        }
-//        // check validate for product_ingredient
-//          else if (productDTO.getIngredient().length() <= 3) {
-//            errors.rejectValue("ingredient", "", "Thành phần phải dài hơn 3 ký tự");
-//        } else if (productDTO.getIngredient().length() > 100) {
-//            errors.rejectValue("ingredient", "", "Tên thành phần quá dài, không được quá 100 kí tự");
-//        } else if (productDTO.getIngredient().matches(REGEX_NAME)) {
-//            errors.rejectValue("ingredient", "", "Tên thành không đúng định dạng hoặc chứa kí tự đặc biệt");
-//        }
-//
-//        // check validate for product_supplier
-//        else if (productDTO.getSupplier().length() < 3) {
-//            errors.rejectValue("supplier", "", "Tên nhà cung cấp phải dài hơn 3 ký tự");
-//        } else if (productDTO.getSupplier().length() > 100) {
-//            errors.rejectValue("supplier", "", "Tên nhà cung quá dài, không được quá 100 kí tự");
-//        } else if (productDTO.getSupplier().matches(REGEX_NAME)) {
-//            errors.rejectValue("supplier", "", "Tên nhà cung không đúng định dạng hoặc chứa kí tự đặc biệt");
-//        }
     }
 
 }
