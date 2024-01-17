@@ -38,6 +38,7 @@ public class EmployeeController {
         if (employee == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
         Map<String, String> employeeDtoMap = new HashMap<>();
         new EmployeeDTO().validate(employeeDTO, bindingResult);
         if (!employee.getPhone().equals(employeeDTO.getPhone())) {
