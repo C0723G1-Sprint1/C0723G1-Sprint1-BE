@@ -1,4 +1,5 @@
 package com.example.medical_supplies.repository.employee;
+import com.example.medical_supplies.model.auth.Account;
 import com.example.medical_supplies.model.auth.Employee;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -35,8 +36,13 @@ public interface IEmployeeRepository extends JpaRepository <Employee,Integer> {
      */
     @Transactional
     @Modifying
-    @Query(value = "insert into employees (`code`,`name`,birthday,phone,address,gender,id_account) " +
+    @Query(value = "insert into employee (`code`,`name`,birthday,phone,address,gender,id_account) " +
             "values (:#{#employee.code},:#{#employee.name},:#{#employee.birthday}, :#{#employee.phone},:#{#employee.address}," +
             ":#{#employee.gender},:#{#employee.account.id})",nativeQuery = true)
     void addEmployeeRepo(@Param("employee") Employee employee);
+
+    @Query(value = "select a.id from accounts a where `email` = :email",nativeQuery = true)
+    Integer findAccountByEmail(@Param("email") String email);
+    @Query(value = "select * from employee where id_account = :id",nativeQuery = true)
+    Employee findEmployeeByAccountId(@Param("id") Integer id);
 }

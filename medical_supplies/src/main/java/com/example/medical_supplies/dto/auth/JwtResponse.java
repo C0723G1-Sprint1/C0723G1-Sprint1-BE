@@ -16,9 +16,9 @@ import java.util.List;
 public class JwtResponse implements Validator {
     private String accessToken;
     private String tokenType = "Bearer";
-    private Integer id;
-    private String email;
-    private List<String> roles;
+//    private Integer id;
+//    private String email;
+//    private List<String> roles;
 
     @Override
     public boolean supports(Class<?> clazz) {

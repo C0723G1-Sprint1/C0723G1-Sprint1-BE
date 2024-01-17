@@ -39,4 +39,6 @@ public interface IEmployeeService {
 
 
     void save(Employee employee);
+
+    Employee findEmployeeByEmail(String email);
 }
