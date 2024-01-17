@@ -17,7 +17,7 @@ public class AccountDTO implements Validator {
     private static final String REGEX_NAME = "^[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+ [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+(?: [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*)*$";
     @NotBlank(message = "Email không được để trống.")
     @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$", message = "Email sai định dạng.")
-    @Size(min = 15, message = "Mật khẩu phải từ 15 kí tự")
+    @Size(min = 15, message = "Email phải từ 15 kí tự")
     @Size(max = 40, message = "Email phải ít hơn hoặc bằng 45 ký tự")
     private String email;
 
@@ -33,7 +33,7 @@ public class AccountDTO implements Validator {
     @NotBlank(message = "Tên nhân viên không được để trống.")
     private String birthday;
     @NotBlank(message = "Số điện thoại không được để trống.")
-    @Pattern(regexp = "^(01|03|04|05|07|08|09)\\d{8}$", message = "Email sai định dạng.")
+    @Pattern(regexp = "^(01|03|04|05|07|08|09)\\d{8}$", message = "Số điện thoại sai định dạng.")
     private String phone;
     @NotBlank(message = "Địa chỉ không được để trống.")
     private String address;
