@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RequestMapping("/api/employee")
-@CrossOrigin("**")
+@CrossOrigin("*")
 @RestController
 public class EmployeeController {
     @Autowired
@@ -72,6 +72,16 @@ public class EmployeeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             employeeService.save(employee);
+            return new ResponseEntity<>(employee, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/search/{email}")
+    public ResponseEntity<?> getEmployeeByEmail(@PathVariable String email) {
+        Employee employee = employeeService.findEmployeeByEmail(email);
+        if (employee == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
             return new ResponseEntity<>(employee, HttpStatus.OK);
         }
     }

@@ -98,11 +98,14 @@ public class WebSecurityConfig {
         http
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
+//                                .requestMatchers("/**").permitAll()
 //                        Trang không cần đăng nhập
 //                                .requestMatchers("/api/news/**","/api/category").permitAll()
 //                                .requestMatchers("/api/login").permitAll()
 //                                .requestMatchers("/api/employee/**").permitAll()
                                 .requestMatchers("/api/login").permitAll()
+                                .requestMatchers("/api/register").permitAll()
+                                .requestMatchers("/api/role/**").permitAll()
                                 .requestMatchers("/api/employee/**","/api/employee/edit/**").permitAll()
                                 .requestMatchers("/api/changePassword").permitAll()
                                 .requestMatchers("/api/changePassword/**").permitAll()
@@ -120,7 +123,7 @@ public class WebSecurityConfig {
 //                        Trang cần có quyền hợp lệ
 
 //                                .requestMatchers("/api/**","/api/notification/view", "/api/customer/**", "/api/customerType","/api/overview/**").hasAnyRole("ADMIN", "ACCOUNTANT", "SALESMAN")
-//                                .requestMatchers("/api/notification/add/**","/api/sales-report/**").hasRole("MANAGER")
+//                                .requestMatchers("/api/role","/api/register/**","/api/employee//edit/**","").hasRole("MANAGER")
 //                                .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
 //                                .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
 //                                .requestMatchers("/api/warehouses/**").hasRole("WAREHOUSE")
