@@ -147,6 +147,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody AccountDTO accountDTO, BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
+        accountDTO.setName(accountDTO.getName().trim());
         new AccountDTO().validate(accountDTO, bindingResult);
         if (accountService.findByEmail(accountDTO.getEmail()).isPresent()) {
             errors.put("email", "Email đã tồn tại");
