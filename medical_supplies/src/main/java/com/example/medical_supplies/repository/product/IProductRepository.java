@@ -23,7 +23,8 @@ public interface IProductRepository extends JpaRepository<Products,Integer> {
 
     @Query(value = "select p.*,ty.name_type_product,pr.name_productions from products p join type_product ty on p.id_type_product = ty.id " +
             "join productions pr on p.id_production = pr.id where p.name like :nameSearch and ty.name_type_product like :typeProduct " +
-            "and pr.name_productions like :nameProductions ",nativeQuery = true)
+            "and pr.name_productions like :nameProductions " +
+            "order by p.price",nativeQuery = true)
     Page<Products> findAllProduct(Pageable pageable, @Param("nameSearch") String nameSearch, @Param("typeProduct") String typeProduct, @Param("nameProductions") String nameProductions );
 
 
