@@ -61,6 +61,7 @@ public class EmployeeService implements IEmployeeService {
     public void addEmployee(Employee employee) {
         try {
            employeeRepository.addEmployeeRepo(employee);
+
         }catch (Exception e){
             e.getMessage();
         }
