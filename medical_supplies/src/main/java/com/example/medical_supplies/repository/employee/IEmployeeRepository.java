@@ -23,7 +23,7 @@ public interface IEmployeeRepository extends JpaRepository <Employee,Integer> {
     @Transactional
     @Modifying
     @Query(value = "update employee set name = :#{#employee.name}, gender = :#{#employee.gender}, birthday = :#{#employee.birthday}, " +
-            "phone = :#{#employee.phone}, address = :#{#employee.address} " +
+            "phone = :#{#employee.phone}, address = :#{#employee.address}, avatar = :#{#employee.avatar} " +
             "WHERE id = :#{#employee.id}",nativeQuery = true)
     void editEmployeeRepo(@Param("employee") Employee employee);
 
