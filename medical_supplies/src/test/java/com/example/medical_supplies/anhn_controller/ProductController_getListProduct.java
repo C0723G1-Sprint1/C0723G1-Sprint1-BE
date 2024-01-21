@@ -51,12 +51,10 @@ public class ProductController_getListProduct {
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))
                 .andExpect(jsonPath("totalElements").value(9))
-                .andExpect(jsonPath("content[0].name").value("a"))
-                .andExpect(jsonPath("content[0].price").value(1))
-                .andExpect(jsonPath("content[0].mainAvatar").value("a"))
-                .andExpect(jsonPath("content[4].name").value("e"))
-                .andExpect(jsonPath("content[4].price").value(5))
-                .andExpect(jsonPath("content[4].mainAvatar").value("e"))
+                .andExpect(jsonPath("content[0].name").value("Máy thở oxi"))
+                .andExpect(jsonPath("content[0].price").value(500000))
+                .andExpect(jsonPath("content[4].name").value("Áo choảng bảo hộ y tế"))
+                .andExpect(jsonPath("content[4].price").value(200000))
         ;
     }
 
@@ -75,9 +73,8 @@ public class ProductController_getListProduct {
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))
                 .andExpect(jsonPath("totalElements").value(9))
-                .andExpect(jsonPath("content[0].name").value("a"))
-                .andExpect(jsonPath("content[0].price").value(1))
-                .andExpect(jsonPath("content[0].mainAvatar").value("a"));
+                .andExpect(jsonPath("content[0].name").value("Máy thở oxi"))
+                .andExpect(jsonPath("content[0].price").value(500000));
     }
 
     /**
@@ -105,7 +102,7 @@ public class ProductController_getListProduct {
     public void getListProducts_nameSearch_3() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/products/list?page=0&size=5&name=a"))
+                                .get("/api/products/list?page=0&size=5&name=Máy thở oxi"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
@@ -125,9 +122,8 @@ public class ProductController_getListProduct {
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))
                 .andExpect(jsonPath("totalElements").value(9))
-                .andExpect(jsonPath("content[0].name").value("a"))
-                .andExpect(jsonPath("content[0].price").value(1))
-                .andExpect(jsonPath("content[0].mainAvatar").value("a"));
+                .andExpect(jsonPath("content[0].name").value("Máy thở oxi"))
+                .andExpect(jsonPath("content[0].price").value(500000));
     }
 }
 
