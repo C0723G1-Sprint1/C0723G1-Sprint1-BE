@@ -5,6 +5,8 @@ import com.example.medical_supplies.model.product.Products;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface IProductService {
 
     /**
@@ -19,4 +21,6 @@ public interface IProductService {
     boolean createProduct(ProductDTO productDTO);
 
     boolean updateProduct(ProductDTO productDTO);
+
+    List<Products> getListProduct();
 }

@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class ProductService implements IProductService {
 
@@ -25,8 +27,8 @@ public class ProductService implements IProductService {
      */
 
     @Override
-    public Page<Products> findAllProduct(Pageable pageable, String nameSearch,  String typeProduct, String nameProductions ) {
-        return iProductRepository.findAllProduct(pageable, "%"+nameSearch+"%","%"+typeProduct+"%","%"+nameProductions+"%");
+    public Page<Products> findAllProduct(Pageable pageable, String nameSearch, String typeProduct, String nameProductions) {
+        return iProductRepository.findAllProduct(pageable, "%" + nameSearch + "%", "%" + typeProduct + "%", "%" + nameProductions + "%");
     }
 
     @Override
@@ -49,9 +51,14 @@ public class ProductService implements IProductService {
         try {
             iProductRepository.updateProduct(productDTO);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public List<Products> getListProduct() {
+            return iProductRepository.getListProduct();
     }
 
 

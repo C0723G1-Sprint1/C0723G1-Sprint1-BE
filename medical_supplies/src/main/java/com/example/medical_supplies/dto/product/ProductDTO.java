@@ -25,11 +25,9 @@ public class ProductDTO implements Validator {
     private String supplier;
     @NotBlank(message = "Thành phần vật tư không được để trống,khoảng trắng ")
     private String ingredient;
-    @NotBlank(message = "Ảnh vật tư không được để trống,khoảng trắng ")
+    @NotBlank(message = "Ảnh không được để trống")
     private String mainAvatar;
-
     private String avatarOne;
-
     private String avatarTwo;
     @NotBlank(message = "Tên loại tư không được để trống,khoảng trắng ")
     private Integer typeProduct;

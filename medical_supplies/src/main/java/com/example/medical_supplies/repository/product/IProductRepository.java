@@ -12,6 +12,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface IProductRepository extends JpaRepository<Products,Integer> {
 
 
@@ -55,4 +57,8 @@ public interface IProductRepository extends JpaRepository<Products,Integer> {
             "id_production = :#{#productDTO.productions}, id_type_product = :#{#productDTO.typeProduct} " +
             "WHERE id = :#{#productDTO.id} ", nativeQuery = true)
     void updateProduct(@Param("productDTO") ProductDTO productDTO);
+
+
+    @Query(value = "select * products",nativeQuery = true)
+    List<Products> getListProduct();
 }

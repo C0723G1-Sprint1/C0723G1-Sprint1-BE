@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/products")
@@ -34,7 +36,7 @@ public class ProductController {
             @RequestParam(defaultValue = "0", required = false) int page
     ) {
         Pageable pageable = PageRequest.of(page, 9);
-        Page<Products> productPage = iProductService.findAllProduct(pageable,name,type,productions);
+        Page<Products> productPage = iProductService.findAllProduct(pageable, name, type, productions);
         if (productPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -42,40 +44,60 @@ public class ProductController {
     }
 
 
+    /**
+     * Author: HaiDT
+     * This is the method add product
+     * Create product
+     **/
     @PostMapping("/create")
-    public ResponseEntity<Void> addProduct(@RequestBody ProductDTO productDTO, BindingResult bindingResult){
-        new ProductDTO().validate(productDTO,bindingResult);
-        if (bindingResult.hasErrors()){
+    public ResponseEntity<Void> addProduct(@RequestBody ProductDTO productDTO, BindingResult bindingResult) {
+        new ProductDTO().validate(productDTO, bindingResult);
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         boolean status = iProductService.createProduct(productDTO);
-        if (!status){
+        if (!status) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
+    /**
+     * Author: HaiDT.
+     * This is the method update product.
+     * Update one product
+     **/
     @PatchMapping("/update")
-    public ResponseEntity<?> updateProduct(@RequestBody ProductDTO productDTO, BindingResult bindingResult){
-        new ProductDTO().validate(productDTO,bindingResult);
-        if (bindingResult.hasErrors()){
+    public ResponseEntity<?> updateProduct(@RequestBody ProductDTO productDTO, BindingResult bindingResult) {
+        new ProductDTO().validate(productDTO, bindingResult);
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         boolean status = iProductService.updateProduct(productDTO);
-        if (!status){
+        if (!status) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * Author: HaiDT
+     * This is the method get product
+     * Show product details
+     **/
     @GetMapping("/details/{id}")
-    public ResponseEntity<?> detailsProduct(@PathVariable Integer id){
+    public ResponseEntity<?> detailsProduct(@PathVariable Integer id) {
         Products products = iProductService.getProductById(id);
-        if (products == null){
+        if (products == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(products,HttpStatus.OK);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    public List<Products> getListProduct() {
+        List<Products> productsList = iProductService.getListProduct();
+        return productsList;
     }
 
 

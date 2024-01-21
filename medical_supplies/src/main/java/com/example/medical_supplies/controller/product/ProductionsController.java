@@ -26,6 +26,11 @@ public class ProductionsController {
     private IProductions productions;
 
 
+
+    /**
+     * Author: get all product
+     * This is the method get list product
+     * **/
     @GetMapping("/list")
     public ResponseEntity<?> getAllProduction(){
         List<Productions> productionsList = productions.findAllProductions();
