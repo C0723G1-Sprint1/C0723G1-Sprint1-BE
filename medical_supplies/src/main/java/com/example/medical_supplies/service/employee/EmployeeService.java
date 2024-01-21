@@ -2,7 +2,10 @@ package com.example.medical_supplies.service.employee;
 
 import com.example.medical_supplies.model.auth.Account;
 import com.example.medical_supplies.model.auth.Employee;
+import com.example.medical_supplies.repository.auth.IAccountRepository;
+import com.example.medical_supplies.repository.customer.ICustomerRepository;
 import com.example.medical_supplies.repository.employee.IEmployeeRepository;
+import com.example.medical_supplies.service.auth.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +13,9 @@ import org.springframework.stereotype.Service;
 public class EmployeeService implements IEmployeeService {
     @Autowired
     private IEmployeeRepository employeeRepository;
+    @Autowired
+    private IAccountRepository accountRepository;
+
 
     /**
      * Retrieves an employee by employee ID.
@@ -68,13 +74,14 @@ public class EmployeeService implements IEmployeeService {
     }
     @Override
     public void save(Employee employee) {
+
         employeeRepository.save(employee);
     }
 
     @Override
     public Employee findEmployeeByEmail(String email) {
+        Integer idAccount= accountRepository.findAccountByEmail(email);
         try {
-           Integer idAccount= employeeRepository.findAccountByEmail(email);
            return employeeRepository.findEmployeeByAccountId(idAccount);
 
         }catch (Exception e){

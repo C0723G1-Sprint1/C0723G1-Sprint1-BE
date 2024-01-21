@@ -8,24 +8,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "employee")
-public class Employee {
+@Table(name = "customers")
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column ( nullable = false, unique = true)
+    @Column( nullable = false, unique = true)
     private String code;
     @Column(nullable = false)
     private String name;
-    @Column(columnDefinition = "date",nullable = false)
+    @Column(nullable = false)
     private String birthday;
     @Column(nullable = false)
     private String phone;
     @Column(nullable = false)
     private String address;
-    @Column(columnDefinition = "bit(1)")
-    private Boolean gender;
-    private String avatar;
+
     @OneToOne
     @JsonBackReference
     @JoinColumn(name = "id_account")
@@ -79,27 +77,11 @@ public class Employee {
         this.address = address;
     }
 
-    public Boolean getGender() {
-        return gender;
-    }
-
-    public void setGender(Boolean gender) {
-        this.gender = gender;
-    }
-
     public Account getAccount() {
         return account;
     }
 
     public void setAccount(Account account) {
         this.account = account;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 }
