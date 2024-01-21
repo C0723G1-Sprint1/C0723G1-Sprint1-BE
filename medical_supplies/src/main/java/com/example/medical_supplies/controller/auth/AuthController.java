@@ -129,9 +129,9 @@ public class AuthController {
             Account account = accountService.findByEmail(authentication.getName()).get();
             account.setPassword(passwordEncoder.encode(changePasswordDTO.getNewPassword()));
             accountService.updatePassword(account);
-            return new ResponseEntity<>("Doi mat khau thanh cong!", HttpStatus.OK);
+            return new ResponseEntity<>("Đổi Mật Khẩu Thành Công!", HttpStatus.OK);
         } catch (BadCredentialsException e) {
-            errors.put("password", "Mat khau cu khong chinh xac.");
+            errors.put("password", "Mật Khẩu Cũ Không Chính Xác.");
             return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
     }
