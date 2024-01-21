@@ -41,8 +41,7 @@ public interface IEmployeeRepository extends JpaRepository <Employee,Integer> {
             ":#{#employee.gender},:#{#employee.account.id})",nativeQuery = true)
     void addEmployeeRepo(@Param("employee") Employee employee);
 
-    @Query(value = "select a.id from accounts a where `email` = :email",nativeQuery = true)
-    Integer findAccountByEmail(@Param("email") String email);
+
     @Query(value = "select * from employee where id_account = :id",nativeQuery = true)
     Employee findEmployeeByAccountId(@Param("id") Integer id);
 }

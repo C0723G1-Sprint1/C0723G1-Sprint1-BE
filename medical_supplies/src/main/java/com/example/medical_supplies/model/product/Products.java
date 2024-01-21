@@ -1,6 +1,10 @@
 package com.example.medical_supplies.model.product;
 
+import com.example.medical_supplies.model.cart.OrderDetails;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 
 @Entity
@@ -34,6 +38,10 @@ public class Products {
     @ManyToOne
     @JoinColumn(name = "id_production", referencedColumnName = "id")
     private Productions productions;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "products")
+    private Set<OrderDetails> orderDetails;
 
 
     public Products() {
@@ -139,5 +147,13 @@ public class Products {
 
     public void setProductions(Productions productions) {
         this.productions = productions;
+    }
+
+    public Set<OrderDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(Set<OrderDetails> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 }

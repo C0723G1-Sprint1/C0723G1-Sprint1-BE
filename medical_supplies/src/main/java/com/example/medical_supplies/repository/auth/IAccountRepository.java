@@ -53,4 +53,7 @@ public interface IAccountRepository extends JpaRepository<Account,Long> {
     @Transactional
     @Query(value = "UPDATE accounts SET password = :password WHERE email =:email",nativeQuery = true)
     void updatePasswordAccount(@Param("email") String email,@Param("password") String password);
+
+    @Query(value = "select a.id from accounts a where `email` = :email",nativeQuery = true)
+    Integer findAccountByEmail(@Param("email") String email);
 }
