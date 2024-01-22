@@ -7,15 +7,16 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 public class ProductDTO implements Validator {
-    private static final String REGEX_NAME = "^[A-Z]\\w*\\s?(\\w*\\s?){1,50}$";
+    private static final String REGEX_NAME = "^[^\\d!@#$%^&*()_+={}\\[\\]:;,<.>?\\\\\\/'\"]*$";
     private Integer id;
-    @NotBlank(message = "Tên vật tư không được để trông,khoảng trắng hoặc null")
+    @NotBlank(message = "Tên vật tư không được để trông hoặc khoảng trắng")
     @Pattern(regexp = REGEX_NAME,message = "Tên nhà cung không đúng định dạng hoặc chứa kí tự đặc biệt")
     @Min(value = 3,message = "Tên nhà cung cấp phải dài hơn 3 ký tự")
-    @Max(value = 100,message = "Tên nhà cung quá dài, không được quá 100 kí tự")
+    @Max(value = 100,message = "Tên nhà cung cấp không được quá 100 kí tự")
     private String name;
     @NotBlank(message = "Giá vật tư không được để trống,khoảng trắng ")
     @Min(value = 1000, message = "Giá vật tư phải lớn hơn 1000 VNĐ")
+    @Max(value = 1000000000,message = "Giá vật tư không được lớn hơn 100000000000")
     private Double price;
     @NotBlank(message = "Số lượng vật tư không được để trống,khoảng trắng")
     @Min(value = 1, message = "Số lượng phải lớn hơn 0")
