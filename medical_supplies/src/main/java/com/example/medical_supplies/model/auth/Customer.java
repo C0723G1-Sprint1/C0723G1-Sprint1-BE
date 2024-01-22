@@ -1,9 +1,12 @@
 package com.example.medical_supplies.model.auth;
 
+import com.example.medical_supplies.model.cart.Orders;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -28,6 +31,17 @@ public class Customer {
     @JsonBackReference
     @JoinColumn(name = "id_account")
     private Account account;
+    @OneToMany(mappedBy = "customer")
+    @JsonBackReference
+    private Set<Orders> orders;
+
+    public Set<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Orders> orders) {
+        this.orders = orders;
+    }
 
     public Integer getId() {
         return id;

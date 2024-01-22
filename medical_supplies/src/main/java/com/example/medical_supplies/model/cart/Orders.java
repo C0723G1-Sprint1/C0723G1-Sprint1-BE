@@ -18,30 +18,13 @@ public class Orders {
     private Integer id;
     @Column(columnDefinition = "DATETIME", nullable = false)
     private LocalDateTime dateOrder;
-    @OneToOne
-    @JsonBackReference
-    @JoinColumn(name = "id_customer", unique = true, nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_customer", referencedColumnName = "id")
     private Customer customer;
 
     @JsonBackReference
     @OneToMany(mappedBy = "order")
     private Set<OrderDetails> orderDetails;
-
-    public LocalDateTime getDateOrder() {
-        return dateOrder;
-    }
-
-    public void setDateOrder(LocalDateTime dateOrder) {
-        this.dateOrder = dateOrder;
-    }
-
-    public Set<OrderDetails> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(Set<OrderDetails> orderDetails) {
-        this.orderDetails = orderDetails;
-    }
 
     public Integer getId() {
         return id;
@@ -51,11 +34,27 @@ public class Orders {
         this.id = id;
     }
 
+    public LocalDateTime getDateOrder() {
+        return dateOrder;
+    }
+
+    public void setDateOrder(LocalDateTime dateOrder) {
+        this.dateOrder = dateOrder;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Set<OrderDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(Set<OrderDetails> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 }
