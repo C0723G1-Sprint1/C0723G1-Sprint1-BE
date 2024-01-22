@@ -26,6 +26,7 @@ public class EmployeeDTO implements Validator {
     private boolean gender;
     private String avatar;
 
+
     @Override
     public boolean supports(Class<?> clazz) {
         return false;

@@ -73,7 +73,7 @@ public class ProductController {
     public ResponseEntity<?> detailsProduct(@PathVariable Integer id){
         Products products = iProductService.getProductById(id);
         if (products == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(products,HttpStatus.OK);
     }
