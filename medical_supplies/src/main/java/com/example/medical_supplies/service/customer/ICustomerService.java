@@ -6,4 +6,5 @@ public interface ICustomerService {
     void saveCustomer(Customer customer);
 
     Customer findCustomerByEmail(String email);
+    Customer findCustomerById(Integer id);
 }

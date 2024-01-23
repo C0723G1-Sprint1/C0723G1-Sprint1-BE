@@ -1,13 +1,16 @@
 package com.example.medical_supplies.dto.order;
 
+import com.example.medical_supplies.model.auth.Customer;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDto {
     private Integer idCustomer;
-    private String [] listProduct;
+    private List<OrderDetailDto> list;
 
     public Integer getIdCustomer() {
         return idCustomer;
@@ -17,11 +20,11 @@ public class OrderDto {
         this.idCustomer = idCustomer;
     }
 
-    public String[] getListProduct() {
-        return listProduct;
+    public List<OrderDetailDto> getList() {
+        return list;
     }
 
-    public void setListProduct(String[] listProduct) {
-        this.listProduct = listProduct;
+    public void setList(List<OrderDetailDto> list) {
+        this.list = list;
     }
 }

@@ -33,4 +33,13 @@ public class CustomerService implements ICustomerService{
             return null;
         }
     }
+
+    @Override
+    public Customer findCustomerById(Integer id) {
+        try {
+            return customerRepository.findCustomerById(id);
+        }catch (Exception e){
+            return null;
+        }
+    }
 }
